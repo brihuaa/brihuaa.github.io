@@ -1,9 +1,8 @@
 :root {
-    --primary: #2ecc71;
-    --secondary: #3498db;
     --bg-color: #ffffff;
     --text-color: #2c3e50;
     --card-bg: #f8f9fa;
+    --primary: #2ecc71;
 }
 
 [data-theme="dark"] {
@@ -33,6 +32,7 @@ body {
     padding: 10px;
     border-radius: 50%;
     background: var(--card-bg);
+    border: none;
     color: var(--text-color);
     z-index: 1000;
 }
@@ -46,7 +46,7 @@ body {
 
 .competency-card {
     background: var(--card-bg);
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s;

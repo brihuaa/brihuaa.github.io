@@ -1,10 +1,38 @@
+const technologies = ['c++', 'python', 'java', 'typescript', 'html', 'css', 'react', 'sql', 'mysql'];
+let activeFilters = new Set();
+
+function initFilters() {
+    const container = document.getElementById('filters-container');
+    technologies.forEach(tech => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.innerHTML = `<i class="devicon-${tech}-plain"></i>`;
+        btn.onclick = () => toggleFilter(tech);
+        container.appendChild(btn);
+    });
+}
+
+function toggleFilter(tech) {
+    const btn = event.target.closest('button');
+    btn.classList.toggle('active');
+    activeFilters.has(tech) ? activeFilters.delete(tech) : activeFilters.add(tech);
+    filterCompetencies();
+}
+
+function filterCompetencies() {
+    document.querySelectorAll('.competency-card').forEach(card => {
+        const cardTechs = card.dataset.tech.split(',');
+        const show = activeFilters.size === 0 || 
+                     cardTechs.some(tech => activeFilters.has(tech));
+        card.style.display = show ? 'block' : 'none';
+    });
+}
+
 function toggleTheme() {
-    const body = document.body;
-    const currentTheme = body.getAttribute('data-theme') || 'light';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    document.body.setAttribute('data-theme',
+        document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+    );
+    localStorage.setItem('theme', document.body.getAttribute('data-theme'));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
