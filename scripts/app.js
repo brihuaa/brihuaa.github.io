@@ -1,31 +1,100 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Configuración de la gráfica de habilidades (Radar Chart)
-    const ctx = document.getElementById('skillsChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: ['C++', 'Python', 'TypeScript', 'Java', 'HTML/CSS', 'Git'],
-            datasets: [{
-                label: 'Nivel de habilidad',
-                data: [85, 90, 75, 80, 95, 85], // Ajusta estos valores
-                backgroundColor: 'rgba(45, 85, 255, 0.2)',
-                borderColor: 'rgba(45, 85, 255, 1)',
-                pointBackgroundColor: 'rgba(45, 85, 255, 1)',
-            }]
-        },
-        options: {
-            scales: {
-                r: {
-                    beginAtZero: true,
-                    max: 100,
-                    ticks: { color: '#fff' },
-                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                    pointLabels: { color: '#fff' }
-                }
-            },
-            plugins: {
-                legend: { labels: { color: '#fff' } }
-            }
-        }
+// Configuración inicial
+const technologies = ['c++', 'python', 'java', 'typescript', 'html', 'css', 'react', 'sql', 'mysql'];
+let activeFilters = new Set();
+
+// Inicializar filtros
+function initFilters() {
+    const container = document.getElementById('filters-container');
+    technologies.forEach(tech => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.textContent = tech;
+        btn.onclick = () => toggleFilter(tech);
+        container.appendChild(btn);
     });
+}
+
+// Toggle filtros
+function toggleFilter(tech) {
+    const btn = event.target;
+    btn.classList.toggle('active');
+    activeFilters.has(tech) ? activeFilters.delete(tech) : activeFilters.add(tech);
+    filterCompetencies();
+}
+
+// Filtrar tarjetas
+function filterCompetencies() {
+    document.querySelectorAll('.competency-card').forEach(card => {
+        const cardTechs = card.dataset.tech.split(',');
+        const show = activeFilters.size === 0 || 
+                     cardTechs.some(tech => activeFilters.has(tech));
+        card.style.display = show ? 'block' : 'none';
+    });
+}
+
+// Toggle tema claro/oscuro
+function toggleTheme() {
+    document.body.setAttribute('data-theme',
+        document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+    );
+    localStorage.setItem('theme', document.body.getAttribute('data-theme'));
+    updateCharts();
+}
+
+// Configuración de gráficas
+const chartConfig = (labels, data) => ({
+    type: 'radar',
+    data: {
+        labels: labels,
+        datasets: [{
+            data: data,
+            backgroundColor: 'rgba(46, 204, 113, 0.2)',
+            borderColor: '#2ecc71',
+            pointBackgroundColor: '#2ecc71'
+        }]
+    },
+    options: {
+        scales: {
+            r: {
+                beginAtZero: true,
+                max: 100,
+                ticks: { color: 'var(--text-color)' },
+                grid: { color: 'rgba(0,0,0,0.1)' },
+                pointLabels: { color: 'var(--text-color)' }
+            }
+        },
+        plugins: { legend: { display: false } }
+    }
+});
+
+// Inicializar gráficas
+function initCharts() {
+    new Chart(document.getElementById('languagesChart'), chartConfig(
+        ['C++', 'Python', 'Java', 'TypeScript'], [85, 95, 75, 70]
+    ));
+
+    new Chart(document.getElementById('webChart'), chartConfig(
+        ['HTML/CSS', 'React', 'TypeScript'], [90, 80, 75]
+    ));
+
+    new Chart(document.getElementById('dbChart'), chartConfig(
+        ['SQL', 'MySQL', 'Normalización'], [95, 85, 90]
+    ));
+}
+
+// Actualizar gráficas al cambiar tema
+function updateCharts() {
+    Chart.getChart("languagesChart").destroy();
+    Chart.getChart("webChart").destroy();
+    Chart.getChart("dbChart").destroy();
+    initCharts();
+}
+
+// Inicializar
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({ duration: 1000 });
+    initFilters();
+    initCharts();
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.setAttribute('data-theme', savedTheme);
 });

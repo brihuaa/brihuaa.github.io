@@ -3,29 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrián Brihuega - Portfolio</title>
+    <title>Competencias Técnicas - Adrián Brihuega</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
-    <!-- Chart.js para gráficas -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <header class="header">
-        <h1>Adrián Brihuega Sánchez</h1>
-        <p>Estudiante de Ingeniería Informática @ Universidad Nebrija</p>
-    </header>
+    <div class="container">
+        <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+        
+        <h1 data-aos="zoom-in">💻 Competencias Técnicas</h1>
+        
+        <div class="filters" id="filters-container"></div>
 
-    <section class="skills">
-        <h2>🛠️ Lenguajes y Tecnologías</h2>
-        <div class="badges-container">
-            <!-- Badges generados con Shields.io -->
-            <img src="https://img.shields.io/badge/C++-00599C?logo=c%2B%2B&logoColor=white">
-            <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white">
-            <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white">
-            <img src="https://img.shields.io/badge/Java-007396?logo=openjdk&logoColor=white">
+        <div class="competency-grid">
+            <!-- Lenguajes de Programación -->
+            <div class="competency-card" data-tech="c++,python,java,typescript" data-aos="fade-right">
+                <h2>🚀 Lenguajes de Programación</h2>
+                <div class="progress-chart">
+                    <canvas id="languagesChart"></canvas>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">C++ (Avanzado)</span>
+                    <span class="tech-tag">Python (Experto)</span>
+                    <span class="tech-tag">Java (Intermedio)</span>
+                    <span class="tech-tag">TypeScript (Intermedio)</span>
+                </div>
+            </div>
+
+            <!-- Desarrollo Web -->
+            <div class="competency-card" data-tech="html,css,react,typescript" data-aos="fade-left">
+                <h2>🌐 Desarrollo Web</h2>
+                <div class="progress-chart">
+                    <canvas id="webChart"></canvas>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML5/CSS3 (Experto)</span>
+                    <span class="tech-tag">React (Intermedio)</span>
+                    <span class="tech-tag">TypeScript (Intermedio)</span>
+                </div>
+            </div>
+
+            <!-- Bases de Datos -->
+            <div class="competency-card" data-tech="sql,mysql" data-aos="fade-up">
+                <h2>🗃️ Bases de Datos</h2>
+                <div class="progress-chart">
+                    <canvas id="dbChart"></canvas>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">SQL (Experto)</span>
+                    <span class="tech-tag">MySQL (Avanzado)</span>
+                    <span class="tech-tag">Normalización (Avanzado)</span>
+                </div>
+            </div>
         </div>
-        <canvas id="skillsChart"></canvas> <!-- Gráfica de habilidades -->
-    </section>
+    </div>
 
     <script src="scripts/app.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>
