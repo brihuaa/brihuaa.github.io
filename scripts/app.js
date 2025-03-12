@@ -36,8 +36,12 @@ function toggleTheme() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({ duration: 1000 });
-    initFilters();
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+    
+    // Cargar tema guardado
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.body.setAttribute('data-theme', savedTheme);
 });
