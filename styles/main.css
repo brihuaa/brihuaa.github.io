@@ -1,217 +1,188 @@
-/* styles/main.css */
 :root {
-    --cyber-blue: #00f3ff;
+    --neon-blue: #00f3ff;
     --cyber-pink: #ff00ff;
+    --matrix-green: #00ff00;
     --dark-bg: #0a0a0f;
-    --neon-border: 1px solid var(--cyber-blue);
-    --font-cyber: 'Courier New', monospace;
+    --card-bg: #1a1a1f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
+    font-family: 'Courier New', monospace;
     background: var(--dark-bg);
-    color: #fff;
-    font-family: var(--font-cyber);
+    color: white;
+    overflow-x: hidden;
 }
 
-/* Botón flotante */
-.floating-btn {
+/* Efecto Matrix */
+#matrixCanvas {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, var(--cyber-blue), var(--cyber-pink));
-    border: 2px solid #fff;
-    cursor: pointer;
-    z-index: 1000;
-    animation: pulse 2s infinite;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Pantalla de Entrada */
+.hero {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 1.5rem;
+    text-align: center;
+    position: relative;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+.hero-content {
+    z-index: 2;
+    padding: 20px;
 }
 
-/* Modal */
-.profile-modal {
+.cyber-glitch {
+    font-size: 4rem;
+    text-transform: uppercase;
+    color: var(--neon-blue);
+    position: relative;
+    animation: glitch 3s infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 2px 0 var(--cyber-pink); }
+    2% { transform: skew(3deg); }
+    4% { transform: skew(-2deg); }
+    6% { text-shadow: -2px -2px 0 var(--matrix-green); }
+    98% { text-shadow: 2px 2px 0 var(--cyber-pink); }
+    100% { transform: skew(0); }
+}
+
+.subtitle {
+    color: var(--matrix-green);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px var(--matrix-green);
+}
+
+/* Botones Cyber */
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.cyber-btn {
+    position: relative;
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s all;
+    text-transform: uppercase;
+}
+
+.cyber-btn:hover {
+    background: var(--neon-blue);
+    color: black;
+    box-shadow: 0 0 30px var(--neon-blue);
+}
+
+.scanline {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, 
+        transparent 0%,
+        var(--neon-blue) 50%,
+        transparent 100%
+    );
+    animation: scan 2s infinite;
+}
+
+@keyframes scan {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+/* Secciones */
+.hidden {
     display: none;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.profile-section, .skills-section {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    z-index: 999;
+    height: 100vh;
+    padding: 2rem;
+    background: var(--dark-bg);
+    z-index: 1000;
+    overflow-y: auto;
 }
 
-.modal-content {
-    position: relative;
+/* Tarjeta de Perfil */
+.profile-card {
     max-width: 800px;
-    margin: 5% auto;
-    padding: 20px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
-    color: var(--cyber-blue);
-    cursor: pointer;
-    text-shadow: 0 0 10px var(--cyber-blue);
-}
-
-/* Tarjeta Cyber */
-.cyber-card {
-    background: #111;
-    border: var(--neon-border);
-    box-shadow: 0 0 30px var(--cyber-blue);
+    margin: 2rem auto;
+    background: var(--card-bg);
+    border: 2px solid var(--neon-blue);
+    padding: 2rem;
     position: relative;
-    overflow: hidden;
-}
-
-.hacker-effect {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent 0%,
-        transparent 3%,
-        rgba(0, 243, 255, 0.1) 5%,
-        transparent 10%
-    );
-    animation: scan 6s linear infinite;
-}
-
-@keyframes scan {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
+    box-shadow: 0 0 30px var(--neon-blue);
 }
 
 .profile-header {
     position: relative;
-    padding: 2rem;
-    text-align: center;
-}
-
-.profile-img {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
-    border: 3px solid var(--cyber-blue);
-    position: relative;
-    z-index: 1;
+    margin: 0 auto 2rem;
 }
 
-.glowing-border {
+.profile-header img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid var(--neon-blue);
+    position: relative;
+    z-index: 2;
+}
+
+.hologram-effect {
     position: absolute;
-    width: 210px;
-    height: 210px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, 
+        var(--neon-blue) 0%, 
+        transparent 70%
+    );
+    animation: rotate 20s linear infinite;
     border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, var(--cyber-blue) 0%, transparent 70%);
-    animation: glow 2s infinite alternate;
+    opacity: 0.3;
 }
 
-@keyframes glow {
-    from { opacity: 0.3; }
-    to { opacity: 0.7; }
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-.cyber-divider {
-    display: flex;
-    align-items: center;
-    margin: 2rem 0;
-}
+/* Añadir más estilos para las secciones... */
 
-.line {
-    flex: 1;
-    height: 2px;
-    background: var(--cyber-blue);
-    box-shadow: 0 0 10px var(--cyber-blue);
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cyber-glitch {
+        font-size: 2.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
 }
-
-.cyber-divider i {
-    margin: 0 1rem;
-    color: var(--cyber-pink);
-}
-
-/* Secciones internas */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-}
-
-.info-item {
-    text-align: center;
-    padding: 1.5rem;
-    border: var(--neon-border);
-    position: relative;
-}
-
-.info-item i {
-    font-size: 2rem;
-    color: var(--cyber-blue);
-    margin-bottom: 1rem;
-}
-
-.cyber-skills {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin: 2rem 0;
-}
-
-.hexagon {
-    width: 80px;
-    height: 80px;
-    background: #1a1a1a;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s;
-}
-
-.hexagon:hover {
-    transform: rotate(45deg);
-    background: var(--cyber-blue);
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.social-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    transition: all 0.3s;
-}
-
-.social-btn:hover {
-    transform: translateY(-5px);
-}
-
-.github { background: #333; color: white; }
-.linkedin { background: #0A66C2; color: white; }
-.blog { background: var(--cyber-pink); color: white; }

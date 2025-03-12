@@ -5,163 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrián Brihuega - Portfolio</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Botón flotante -->
-        <button class="floating-btn" onclick="toggleProfile()">
-            <i class="fas fa-user-secret"></i>
-        </button>
+    <!-- Pantalla de Entrada -->
+    <section class="hero" id="hero">
+        <canvas id="matrixCanvas"></canvas>
+        <div class="hero-content">
+            <h1 class="cyber-glitch" data-text="ADRIÁN BRIHUEGA">ADRIÁN BRIHUEGA</h1>
+            <p class="subtitle">Estudiante de Ingeniería Informática<br>Especializado en Ciberseguridad</p>
+            
+            <div class="cta-buttons">
+                <button class="cyber-btn" onclick="showSection('profile')">
+                    <span class="glitch-text">VER CARTA</span>
+                    <div class="scanline"></div>
+                </button>
+                <button class="cyber-btn" onclick="showSection('skills')">
+                    <span class="glitch-text">COMPETENCIAS</span>
+                    <div class="scanline"></div>
+                </button>
+            </div>
+        </div>
+    </section>
 
-        <!-- Modal de presentación -->
-        <div class="profile-modal" id="profileModal">
-            <div class="modal-content" data-aos="zoom-in">
-                <span class="close-btn" onclick="toggleProfile()">&times;</span>
+    <!-- Sección de Perfil -->
+    <section class="profile-section hidden" id="profileSection">
+        <div class="profile-card">
+            <button class="close-btn" onclick="goBack()">&times;</button>
+            
+            <div class="profile-header">
+                <img src="assets/profile.jpg" alt="Adrián Brihuega">
+                <div class="hologram-effect"></div>
+            </div>
+            
+            <div class="profile-info">
+                <h2>Adrián Brihuega Sánchez</h2>
+                <div class="badge">🔒 Ethical Hacker en formación</div>
                 
-                <div class="cyber-card">
-                    <div class="hacker-effect"></div>
-                    
-                    <div class="profile-header">
-                        <img src="assets/foto-perfil.jpg" alt="Adrián Brihuega" class="profile-img">
-                        <div class="glowing-border"></div>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <i class="fas fa-university"></i>
+                        <h3>Universidad Nebrija</h3>
+                        <p>Ingeniería Informática</p>
                     </div>
-
-                    <div class="profile-body">
-                        <h1>Adrián Brihuega Sánchez</h1>
-                        <div class="cyber-divider">
-                            <span class="line"></span>
-                            <i class="fas fa-terminal"></i>
-                            <span class="line"></span>
-                        </div>
-                        
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <i class="fas fa-university"></i>
-                                <h3>Universidad Nebrija</h3>
-                                <p>Ingeniería Informática</p>
-                            </div>
-                            
-                            <div class="info-item">
-                                <i class="fas fa-shield-alt"></i>
-                                <h3>Especialidad</h3>
-                                <p>Ciberseguridad Ofensiva</p>
-                            </div>
-                        </div>
-
-                        <div class="cyber-skills">
-                            <div class="skill">
-                                <div class="hexagon">
-                                    <i class="fab fa-linux"></i>
-                                </div>
-                                <span>Ethical Hacking</span>
-                            </div>
-                            <div class="skill">
-                                <div class="hexagon">
-                                    <i class="fas fa-network-wired"></i>
-                                </div>
-                                <span>Redes Seguras</span>
-                            </div>
-                            <div class="skill">
-                                <div class="hexagon">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <span>DevSecOps</span>
-                            </div>
-                        </div>
-
-                        <div class="social-links">
-                            <a href="#" class="social-btn github">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="social-btn linkedin">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#" class="social-btn blog">
-                                <i class="fas fa-blog"></i>
-                            </a>
-                        </div>
+                    <div class="detail-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Especialidades</h3>
+                        <p>Pentesting · Seguridad en Redes · DevSecOps</p>
                     </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-icon github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-icon linkedin">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-icon blog">
+                        <i class="fas fa-blog"></i>
+                    </a>
                 </div>
             </div>
         </div>
+    </section>
 
-    </body>
-
-    <div class="container">
-        <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+    <!-- Sección de Competencias -->
+    <section class="skills-section hidden" id="skillsSection">
+        <button class="close-btn" onclick="goBack()">&times;</button>
         
-        <h1 data-aos="zoom-in">💻 Competencias Técnicas</h1>
-
-        <div class="competency-grid">
-            <!-- Lenguajes de Programación -->
-            <div class="competency-card" data-aos="fade-right">
-                <h2>🚀 Lenguajes de Programación</h2>
-                <ul class="tech-list">
-                    <li>
+        <div class="skills-grid">
+            <!-- Lenguajes -->
+            <div class="skill-category" data-aos="fade-up">
+                <h2><i class="fas fa-code"></i> Lenguajes</h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
                         <i class="devicon-cplusplus-plain colored"></i>
                         <span>C++</span>
-                    </li>
-                    <li>
-                        <i class="devicon-python-plain colored"></i>
-                        <span>Python</span>
-                    </li>
-                    <li>
-                        <i class="devicon-java-plain colored"></i>
-                        <span>Java</span>
-                    </li>
-                    <li>
-                        <i class="devicon-typescript-plain colored"></i>
-                        <span>TypeScript</span>
-                    </li>
-                </ul>
+                    </div>
+                    <!-- Añadir más tecnologías -->
+                </div>
             </div>
-
+            
             <!-- Desarrollo Web -->
-            <div class="competency-card" data-aos="fade-left">
-                <h2>🌐 Desarrollo Web</h2>
-                <ul class="tech-list">
-                    <li>
-                        <i class="devicon-html5-plain colored"></i>
-                        <span>HTML5</span>
-                    </li>
-                    <li>
-                        <i class="devicon-css3-plain colored"></i>
-                        <span>CSS3</span>
-                    </li>
-                    <li>
-                        <i class="devicon-react-original colored"></i>
+            <div class="skill-category" data-aos="fade-up">
+                <h2><i class="fas fa-globe"></i> Web</h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="devicon-react-plain colored"></i>
                         <span>React</span>
-                    </li>
-                    <li>
-                        <i class="devicon-javascript-plain colored"></i>
-                        <span>JavaScript</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Bases de Datos -->
-            <div class="competency-card" data-aos="fade-up">
-                <h2>🗃️ Bases de Datos</h2>
-                <ul class="tech-list">
-                    <li>
-                        <i class="devicon-mysql-plain colored"></i>
-                        <span>MySQL</span>
-                    </li>
-                    <li>
-                        <i class="devicon-postgresql-plain colored"></i>
-                        <span>PostgreSQL</span>
-                    </li>
-                    <li>
-                        <i class="devicon-mongodb-plain colored"></i>
-                        <span>MongoDB</span>
-                    </li>
-                </ul>
+                    </div>
+                    <!-- Añadir más tecnologías -->
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <script src="scripts/app.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

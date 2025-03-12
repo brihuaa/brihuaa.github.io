@@ -1,64 +1,53 @@
-const technologies = ['c++', 'python', 'java', 'typescript', 'html', 'css', 'react', 'sql', 'mysql'];
-let activeFilters = new Set();
+// Efecto Matrix
+const canvas = document.getElementById('matrixCanvas');
+const ctx = canvas.getContext('2d');
 
-function initFilters() {
-    const container = document.getElementById('filters-container');
-    technologies.forEach(tech => {
-        const btn = document.createElement('button');
-        btn.className = 'filter-btn';
-        btn.innerHTML = `<i class="devicon-${tech}-plain"></i>`;
-        btn.onclick = () => toggleFilter(tech);
-        container.appendChild(btn);
-    });
-}
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function toggleFilter(tech) {
-    const btn = event.target.closest('button');
-    btn.classList.toggle('active');
-    activeFilters.has(tech) ? activeFilters.delete(tech) : activeFilters.add(tech);
-    filterCompetencies();
-}
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+const fontSize = 14;
+const columns = canvas.width/fontSize;
+const drops = [];
 
-function filterCompetencies() {
-    document.querySelectorAll('.competency-card').forEach(card => {
-        const cardTechs = card.dataset.tech.split(',');
-        const show = activeFilters.size === 0 || 
-                     cardTechs.some(tech => activeFilters.has(tech));
-        card.style.display = show ? 'block' : 'none';
-    });
-}
+for(let x = 0; x < columns; x++) drops[x] = 1;
 
-function toggleTheme() {
-    document.body.setAttribute('data-theme',
-        document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-    );
-    localStorage.setItem('theme', document.body.getAttribute('data-theme'));
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({
-        duration: 1000,
-        once: true
-    });
+function drawMatrix() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // Cargar tema guardado
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.body.setAttribute('data-theme', savedTheme);
-});
-function toggleProfile() {
-    const modal = document.getElementById('profileModal');
-    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-}
+    ctx.fillStyle = '#0F0';
+    ctx.font = fontSize + 'px monospace';
 
-// Cerrar modal al hacer click fuera
-window.onclick = function(event) {
-    const modal = document.getElementById('profileModal');
-    if (event.target === modal) {
-        modal.style.display = 'none';
+    for(let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+        
+        if(drops[i]*fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
     }
 }
 
-AOS.init({
-    duration: 1000,
-    once: true
+// Control de Secciones
+function showSection(section) {
+    document.getElementById('hero').style.display = 'none';
+    document.getElementById(`${section}Section`).style.display = 'block';
+    setTimeout(() => {
+        AOS.init({ duration: 1000 });
+        window.scrollTo(0, 0);
+    }, 50);
+}
+
+function goBack() {
+    document.getElementById('hero').style.display = 'flex';
+    document.querySelectorAll('section').forEach(s => s.style.display = 'none');
+}
+
+// Inicialización
+AOS.init();
+setInterval(drawMatrix, 50);
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 });
