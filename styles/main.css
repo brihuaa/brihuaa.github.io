@@ -94,3 +94,50 @@ body {
     background: var(--primary);
     color: white;
 }
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+}
+
+.tech-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.tech-list li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tech-list i {
+    font-size: 2rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.tech-list span {
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+/* Versión móvil */
+@media (max-width: 480px) {
+    .tech-list li {
+        gap: 0.8rem;
+        padding: 0.6rem;
+    }
+    
+    .tech-list i {
+        font-size: 1.8rem;
+    }
+    
+    .tech-list span {
+        font-size: 1rem;
+    }
+}
