@@ -11,44 +11,82 @@
 </head>
 <body>
     <div class="container">
-        <!-- Sección de Presentación -->
-        <section class="profile-card" data-aos="fade-up">
-            <div class="profile-content">
-                <div class="profile-image">
-                    <img src="assets/foto-perfil.jpg" alt="Adrián Brihuega">
-                    <div class="security-badge">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                </div>
-                <div class="profile-info">
-                    <h1>Adrián Brihuega Sánchez</h1>
-                    <h3>Estudiante de Ingeniería Informática</h3>
-                    <div class="university">
-                        <i class="fas fa-university"></i>
-                        <span>Universidad Nebrija</span>
-                    </div>
+        <!-- Botón flotante -->
+        <button class="floating-btn" onclick="toggleProfile()">
+            <i class="fas fa-user-secret"></i>
+        </button>
+
+        <!-- Modal de presentación -->
+        <div class="profile-modal" id="profileModal">
+            <div class="modal-content" data-aos="zoom-in">
+                <span class="close-btn" onclick="toggleProfile()">&times;</span>
+                
+                <div class="cyber-card">
+                    <div class="hacker-effect"></div>
                     
-                    <div class="interests">
-                        <h4>Áreas de Especial Interés:</h4>
-                        <ul>
-                            <li><i class="fas fa-lock"></i> Ciberseguridad Ofensiva</li>
-                            <li><i class="fas fa-network-wired"></i> Seguridad en Redes</li>
-                            <li><i class="fas fa-code"></i> Desarrollo Seguro</li>
-                        </ul>
+                    <div class="profile-header">
+                        <img src="assets/foto-perfil.jpg" alt="Adrián Brihuega" class="profile-img">
+                        <div class="glowing-border"></div>
                     </div>
-                    
-                    <div class="contact-buttons">
-                        <a href="#" class="btn linkedin">
-                            <i class="fab fa-linkedin"></i> LinkedIn
-                        </a>
-                        <a href="#" class="btn github">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
+
+                    <div class="profile-body">
+                        <h1>Adrián Brihuega Sánchez</h1>
+                        <div class="cyber-divider">
+                            <span class="line"></span>
+                            <i class="fas fa-terminal"></i>
+                            <span class="line"></span>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <h3>Universidad Nebrija</h3>
+                                <p>Ingeniería Informática</p>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <h3>Especialidad</h3>
+                                <p>Ciberseguridad Ofensiva</p>
+                            </div>
+                        </div>
+
+                        <div class="cyber-skills">
+                            <div class="skill">
+                                <div class="hexagon">
+                                    <i class="fab fa-linux"></i>
+                                </div>
+                                <span>Ethical Hacking</span>
+                            </div>
+                            <div class="skill">
+                                <div class="hexagon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <span>Redes Seguras</span>
+                            </div>
+                            <div class="skill">
+                                <div class="hexagon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <span>DevSecOps</span>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="social-btn github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-btn linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-btn blog">
+                                <i class="fas fa-blog"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-
+        </div>
 
 
     <div class="container">

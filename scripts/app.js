@@ -45,3 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.body.setAttribute('data-theme', savedTheme);
 });
+function toggleProfile() {
+    const modal = document.getElementById('profileModal');
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}
+
+// Cerrar modal al hacer click fuera
+window.onclick = function(event) {
+    const modal = document.getElementById('profileModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+AOS.init({
+    duration: 1000,
+    once: true
+});
