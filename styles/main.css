@@ -1,19 +1,32 @@
-/* styles/main.css */
 :root {
-    --cyber-blue: #00f3ff;
-    --cyber-pink: #ff00ff;
-    --dark-bg: #0a0a0f;
-    --neon-border: 1px solid var(--cyber-blue);
-    --font-cyber: 'Courier New', monospace;
+    --primary: #2ecc71;
+    --secondary: #3498db;
+    --dark-bg: #1a1a1a;
+    --light-bg: #ffffff;
+    --text-dark: #333;
+    --text-light: #fff;
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--dark-bg);
+    --text-color: var(--text-light);
+    --card-bg: #2d2d2d;
+}
+
+[data-theme="light"] {
+    --bg-color: var(--light-bg);
+    --text-color: var(--text-dark);
+    --card-bg: #f8f9fa;
 }
 
 body {
-    background: var(--dark-bg);
-    color: #fff;
-    font-family: var(--font-cyber);
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s;
 }
 
-/* Botón flotante */
+/* Estilos del modal y botón flotante */
 .floating-btn {
     position: fixed;
     bottom: 30px;
@@ -21,26 +34,24 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(45deg, var(--cyber-blue), var(--cyber-pink));
-    border: 2px solid #fff;
+    background: var(--primary);
+    color: white;
+    border: none;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
     z-index: 1000;
-    animation: pulse 2s infinite;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-size: 1.5rem;
+    transition: transform 0.3s;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+.floating-btn:hover {
+    transform: scale(1.1) rotate(360deg);
 }
 
-/* Modal */
-.profile-modal {
+.modal {
     display: none;
     position: fixed;
     top: 0;
@@ -53,165 +64,64 @@ body {
 
 .modal-content {
     position: relative;
-    max-width: 800px;
+    background: var(--card-bg);
+    max-width: 600px;
     margin: 5% auto;
-    padding: 20px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
-    color: var(--cyber-blue);
-    cursor: pointer;
-    text-shadow: 0 0 10px var(--cyber-blue);
-}
-
-/* Tarjeta Cyber */
-.cyber-card {
-    background: #111;
-    border: var(--neon-border);
-    box-shadow: 0 0 30px var(--cyber-blue);
-    position: relative;
-    overflow: hidden;
-}
-
-.hacker-effect {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent 0%,
-        transparent 3%,
-        rgba(0, 243, 255, 0.1) 5%,
-        transparent 10%
-    );
-    animation: scan 6s linear infinite;
-}
-
-@keyframes scan {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-}
-
-.profile-header {
-    position: relative;
     padding: 2rem;
-    text-align: center;
+    border-radius: 15px;
+    animation: modalOpen 0.5s;
 }
 
-.profile-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 3px solid var(--cyber-blue);
-    position: relative;
-    z-index: 1;
+@keyframes modalOpen {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
 }
 
-.glowing-border {
-    position: absolute;
-    width: 210px;
-    height: 210px;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, var(--cyber-blue) 0%, transparent 70%);
-    animation: glow 2s infinite alternate;
+/* Estilos del resto del contenido */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-@keyframes glow {
-    from { opacity: 0.3; }
-    to { opacity: 0.7; }
+.competency-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.cyber-divider {
-    display: flex;
-    align-items: center;
-    margin: 2rem 0;
-}
-
-.line {
-    flex: 1;
-    height: 2px;
-    background: var(--cyber-blue);
-    box-shadow: 0 0 10px var(--cyber-blue);
-}
-
-.cyber-divider i {
-    margin: 0 1rem;
-    color: var(--cyber-pink);
-}
-
-/* Secciones internas */
-.info-grid {
+.tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-}
-
-.info-item {
-    text-align: center;
-    padding: 1.5rem;
-    border: var(--neon-border);
-    position: relative;
-}
-
-.info-item i {
-    font-size: 2rem;
-    color: var(--cyber-blue);
-    margin-bottom: 1rem;
-}
-
-.cyber-skills {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin: 2rem 0;
-}
-
-.hexagon {
-    width: 80px;
-    height: 80px;
-    background: #1a1a1a;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s;
-}
-
-.hexagon:hover {
-    transform: rotate(45deg);
-    background: var(--cyber-blue);
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
 
-.social-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.tech-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    transition: all 0.3s;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    transition: transform 0.3s;
 }
 
-.social-btn:hover {
+.tech-item:hover {
     transform: translateY(-5px);
 }
 
-.github { background: #333; color: white; }
-.linkedin { background: #0A66C2; color: white; }
-.blog { background: var(--cyber-pink); color: white; }
+.tech-item i {
+    font-size: 3rem;
+}
+
+/* Estilos específicos del tema */
+.theme-toggle {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: var(--card-bg);
+}
