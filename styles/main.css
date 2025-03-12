@@ -1,4 +1,7 @@
 :root {
+    --bg-color: #ffffff;
+    --text-color: #2c3e50;
+    --card-bg: #f8f9fa;
     --primary: #2ecc71;
     --secondary: #3498db;
 }
@@ -9,18 +12,11 @@
     --card-bg: #2d2d2d;
 }
 
-/* Añade esto al final del archivo */
 body {
+    font-family: 'Segoe UI', sans-serif;
     background: var(--bg-color);
     color: var(--text-color);
-  }
-  
-.competency-card {
-    background: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: all 0.3s;
 }
 
 .container {
@@ -37,6 +33,44 @@ body {
     padding: 10px;
     border-radius: 50%;
     background: var(--card-bg);
+    border: none;
+    color: var(--text-color);
+}
+
+.competency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.competency-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.competency-card:hover {
+    transform: translateY(-5px);
+}
+
+.tech-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.tech-logos i {
+    font-size: 3.5rem;
+    transition: transform 0.3s;
+}
+
+.tech-logos i:hover {
+    transform: scale(1.2);
 }
 
 .filters {
@@ -59,37 +93,4 @@ body {
 .filter-btn.active {
     background: var(--primary);
     color: white;
-}
-
-.competency-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-
-.competency-card:hover {
-    transform: translateY(-5px);
-}
-
-.progress-chart {
-    width: 100%;
-    height: 200px;
-    margin: 1rem 0;
-}
-
-.tech-tags {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-}
-
-.tech-tag {
-    background: rgba(46, 204, 113, 0.2);
-    color: var(--primary);
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.9em;
 }
