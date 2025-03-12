@@ -32,25 +32,12 @@ function filterCompetencies() {
     });
 }
 
+// Toggle tema claro/oscuro
 function toggleTheme() {
-    const body = document.body;
-    body.setAttribute('data-theme', 
-        body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+    document.body.setAttribute('data-theme',
+        document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
     );
-    
-    // Fuerza la actualización de variables CSS
-    const root = document.documentElement;
-    if(body.getAttribute('data-theme') === 'dark') {
-        root.style.setProperty('--bg-color', '#1a1a1a');
-        root.style.setProperty('--text-color', '#ecf0f1');
-        root.style.setProperty('--card-bg', '#2d2d2d');
-    } else {
-        root.style.setProperty('--bg-color', '#ffffff');
-        root.style.setProperty('--text-color', '#2c3e50');
-        root.style.setProperty('--card-bg', '#f8f9fa');
-    }
-    
-    localStorage.setItem('theme', body.getAttribute('data-theme'));
+    localStorage.setItem('theme', document.body.getAttribute('data-theme'));
     updateCharts();
 }
 
