@@ -7,47 +7,77 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="styles/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
         
         <h1 data-aos="zoom-in">💻 Competencias Técnicas</h1>
-        
-        <div class="filters" id="filters-container"></div>
 
         <div class="competency-grid">
             <!-- Lenguajes de Programación -->
-            <div class="competency-card" data-tech="c++,python,java,typescript" data-aos="fade-right">
+            <div class="competency-card" data-aos="fade-right">
                 <h2>🚀 Lenguajes de Programación</h2>
-                <div class="tech-logos">
+                <ul class="tech-list">
+                    <li>
                         <i class="devicon-cplusplus-plain colored"></i>
+                        <span>C++</span>
+                    </li>
+                    <li>
                         <i class="devicon-python-plain colored"></i>
+                        <span>Python</span>
+                    </li>
+                    <li>
                         <i class="devicon-java-plain colored"></i>
-                    <i class="devicon-typescript-plain colored"></i>
-                </div>
+                        <span>Java</span>
+                    </li>
+                    <li>
+                        <i class="devicon-typescript-plain colored"></i>
+                        <span>TypeScript</span>
+                    </li>
+                </ul>
             </div>
 
             <!-- Desarrollo Web -->
-            <div class="competency-card" data-tech="html,css,react,typescript" data-aos="fade-left">
+            <div class="competency-card" data-aos="fade-left">
                 <h2>🌐 Desarrollo Web</h2>
-                <div class="tech-logos">
+                <ul class="tech-list">
+                    <li>
                         <i class="devicon-html5-plain colored"></i>
+                        <span>HTML5</span>
+                    </li>
+                    <li>
                         <i class="devicon-css3-plain colored"></i>
+                        <span>CSS3</span>
+                    </li>
+                    <li>
                         <i class="devicon-react-original colored"></i>
-                        <i class="devicon-typescript-plain colored"></i>
-                </div>
+                        <span>React</span>
+                    </li>
+                    <li>
+                        <i class="devicon-javascript-plain colored"></i>
+                        <span>JavaScript</span>
+                    </li>
+                </ul>
             </div>
 
             <!-- Bases de Datos -->
-            <div class="competency-card" data-tech="sql,mysql" data-aos="fade-up">
+            <div class="competency-card" data-aos="fade-up">
                 <h2>🗃️ Bases de Datos</h2>
-                <div class="tech-logos">
-                    <i class="devicon-mysql-plain colored"></i>
-                    <i class="devicon-postgresql-plain colored"></i>
-                    <i class="devicon-mongodb-plain colored"></i>
-                </div>
+                <ul class="tech-list">
+                    <li>
+                        <i class="devicon-mysql-plain colored"></i>
+                        <span>MySQL</span>
+                    </li>
+                    <li>
+                        <i class="devicon-postgresql-plain colored"></i>
+                        <span>PostgreSQL</span>
+                    </li>
+                    <li>
+                        <i class="devicon-mongodb-plain colored"></i>
+                        <span>MongoDB</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
