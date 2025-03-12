@@ -1,188 +1,102 @@
 :root {
-    --neon-blue: #00f3ff;
-    --cyber-pink: #ff00ff;
-    --matrix-green: #00ff00;
-    --dark-bg: #0a0a0f;
-    --card-bg: #1a1a1f;
+    --primary: #2ecc71;
+    --secondary: #3498db;
+    --bg-color: #ffffff;
+    --text-color: #2c3e50;
+    --card-bg: #f8f9fa;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ecf0f1;
+    --card-bg: #2d2d2d;
 }
 
 body {
-    font-family: 'Courier New', monospace;
-    background: var(--dark-bg);
-    color: white;
-    overflow-x: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s;
 }
 
-/* Efecto Matrix */
-#matrixCanvas {
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.theme-toggle {
     position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    color: var(--text-color);
+    z-index: 1000;
 }
 
-/* Pantalla de Entrada */
-.hero {
-    height: 100vh;
+.competency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.competency-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.competency-card:hover {
+    transform: translateY(-5px);
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+}
+
+.tech-list li {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.tech-list li:hover {
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.tech-list i {
+    font-size: 2rem;
+    width: 40px;
     text-align: center;
-    position: relative;
 }
 
-.hero-content {
-    z-index: 2;
-    padding: 20px;
-}
-
-.cyber-glitch {
-    font-size: 4rem;
-    text-transform: uppercase;
-    color: var(--neon-blue);
-    position: relative;
-    animation: glitch 3s infinite;
-    margin-bottom: 1rem;
-}
-
-@keyframes glitch {
-    0% { text-shadow: 2px 2px 0 var(--cyber-pink); }
-    2% { transform: skew(3deg); }
-    4% { transform: skew(-2deg); }
-    6% { text-shadow: -2px -2px 0 var(--matrix-green); }
-    98% { text-shadow: 2px 2px 0 var(--cyber-pink); }
-    100% { transform: skew(0); }
-}
-
-.subtitle {
-    color: var(--matrix-green);
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
-    text-shadow: 0 0 10px var(--matrix-green);
-}
-
-/* Botones Cyber */
-.cta-buttons {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.cyber-btn {
-    position: relative;
-    background: transparent;
-    border: 2px solid var(--neon-blue);
-    color: var(--neon-blue);
-    padding: 1rem 2rem;
+.tech-list span {
     font-size: 1.1rem;
-    cursor: pointer;
-    overflow: hidden;
-    transition: 0.3s all;
-    text-transform: uppercase;
+    font-weight: 500;
 }
 
-.cyber-btn:hover {
-    background: var(--neon-blue);
-    color: black;
-    box-shadow: 0 0 30px var(--neon-blue);
-}
-
-.scanline {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, 
-        transparent 0%,
-        var(--neon-blue) 50%,
-        transparent 100%
-    );
-    animation: scan 2s infinite;
-}
-
-@keyframes scan {
-    0% { top: -100%; }
-    100% { top: 100%; }
-}
-
-/* Secciones */
-.hidden {
-    display: none;
-    opacity: 0;
-    transform: translateY(50px);
-}
-
-.profile-section, .skills-section {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    padding: 2rem;
-    background: var(--dark-bg);
-    z-index: 1000;
-    overflow-y: auto;
-}
-
-/* Tarjeta de Perfil */
-.profile-card {
-    max-width: 800px;
-    margin: 2rem auto;
-    background: var(--card-bg);
-    border: 2px solid var(--neon-blue);
-    padding: 2rem;
-    position: relative;
-    box-shadow: 0 0 30px var(--neon-blue);
-}
-
-.profile-header {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 2rem;
-}
-
-.profile-header img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 3px solid var(--neon-blue);
-    position: relative;
-    z-index: 2;
-}
-
-.hologram-effect {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, 
-        var(--neon-blue) 0%, 
-        transparent 70%
-    );
-    animation: rotate 20s linear infinite;
-    border-radius: 50%;
-    opacity: 0.3;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* Añadir más estilos para las secciones... */
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    .cyber-glitch {
-        font-size: 2.5rem;
+    .container {
+        padding: 1rem;
     }
     
-    .cta-buttons {
-        flex-direction: column;
+    .competency-card {
+        padding: 1.5rem;
+    }
+    
+    .tech-list li {
+        padding: 0.6rem;
     }
 }
