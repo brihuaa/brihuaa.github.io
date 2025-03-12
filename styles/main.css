@@ -12,13 +12,15 @@
     --card-bg: #2d2d2d;
 }
 
+/* Añade esto al final del archivo */
 body {
-    font-family: 'Segoe UI', sans-serif;
     background: var(--bg-color);
     color: var(--text-color);
-    transition: all 0.3s;
-}
-
+  }
+  
+  .competency-card {
+    background: var(--card-bg);
+  }
 .container {
     max-width: 1200px;
     margin: 0 auto;
