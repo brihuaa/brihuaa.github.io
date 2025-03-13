@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Competencias Técnicas - Adrián Brihuega</title>
+    <title data-i18n="title">Competencias Técnicas - Adrián Brihuega</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="styles/main.css">
 </head>
+
 <body>
     <div class="container">
         <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+        <!-- Añadir el botón de idioma junto al de tema -->
+        <div class="language-toggle" onclick="toggleLanguage()">ES</div>
+
         
-        <h1 data-aos="zoom-in">💻 Competencias Técnicas</h1>
+        <h1 data-aos="zoom-in" data-i18n="skills_title">💻 Competencias Técnicas</h1>
 
         <div class="competency-grid">
             <!-- Lenguajes de Programación -->
             <div class="competency-card" data-aos="fade-right">
-                <h2>🚀 Lenguajes de Programación</h2>
+<h2 data-i18n="programming_languages">🚀 Lenguajes de Programación</h2>
                 <ul class="tech-list">
                     <li>
                         <i class="devicon-cplusplus-plain colored"></i>
@@ -48,7 +53,7 @@
 
             <!-- Desarrollo Web -->
             <div class="competency-card" data-aos="fade-left">
-                <h2>🌐 Desarrollo Web</h2>
+                <h2 data-i18n="web_development">🌐 Desarrollo Web</h2>
                 <ul class="tech-list">
                     <li>
                         <i class="devicon-html5-plain colored"></i>
@@ -71,7 +76,7 @@
 
             <!-- Bases de Datos -->
             <div class="competency-card" data-aos="fade-up">
-                <h2>🗃️ Bases de Datos</h2>
+                <h2 data-i18n="databases">🗃️ Bases de Datos</h2>
                 <ul class="tech-list">
                     <li>
                         <i class="devicon-mysql-plain colored"></i>
@@ -90,7 +95,7 @@
             
             <!-- Entornos -->
             <div class="competency-card" data-aos="fade-up">
-                <h2>🔷 Entornos</h2>
+                <h2 data-i18n="environments">🔷 Entornos</h2>
                 <ul class="tech-list">
                     <li>
                         <i class="devicon-qt-plain colored"></i>
