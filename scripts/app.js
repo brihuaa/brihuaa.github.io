@@ -100,8 +100,9 @@ function toggleTheme() {
 }
 
 function redirectToCoverLetter() {
+    const basePath = window.location.pathname.replace('front_page.html', '');
     const page = currentLang === 'es' ? 'carta_presentacion.html' : 'cover_letter.html';
-    window.location.href = page;
+    window.location.href = basePath + page;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
