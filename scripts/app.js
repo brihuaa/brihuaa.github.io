@@ -24,16 +24,12 @@ const translations = {
     "environments": {
         "es": "🔷 Entornos",
         "en": "🔷 Development Environments"
+    },
+    "cover_letter": {
+        "es": "📝 Carta",
+        "en": "📝 Cover Letter"
     }
 };
-// Añadir estas funciones
-function toggleLanguage() {
-    currentLang = currentLang === 'es' ? 'en' : 'es';
-    localStorage.setItem('language', currentLang);
-    updateContent();
-    document.querySelector('.language-toggle').textContent = currentLang.toUpperCase();
-    document.documentElement.lang = currentLang;
-}
 
 function updateContent() {
     document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -72,12 +68,6 @@ function initFilters() {
     });
 }
 
-function toggleFilter(tech) {
-    const btn = event.target.closest('button');
-    btn.classList.toggle('active');
-    activeFilters.has(tech) ? activeFilters.delete(tech) : activeFilters.add(tech);
-    filterCompetencies();
-}
 
 function filterCompetencies() {
     document.querySelectorAll('.competency-card').forEach(card => {
@@ -87,12 +77,31 @@ function filterCompetencies() {
         card.style.display = show ? 'block' : 'none';
     });
 }
+function toggleFilter(tech) {
+    const btn = event.target.closest('button');
+    btn.classList.toggle('active');
+    activeFilters.has(tech) ? activeFilters.delete(tech) : activeFilters.add(tech);
+    filterCompetencies();
+}
+
+function toggleLanguage() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    localStorage.setItem('language', currentLang);
+    updateContent();
+    document.querySelector('.language-toggle').textContent = currentLang.toUpperCase();
+    document.documentElement.lang = currentLang;
+}
 
 function toggleTheme() {
     document.body.setAttribute('data-theme',
         document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
     );
     localStorage.setItem('theme', document.body.getAttribute('data-theme'));
+}
+
+function redirectToCoverLetter() {
+    const page = currentLang === 'es' ? 'carta_presentacion.html' : 'cover_letter.html';
+    window.location.href = page;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
