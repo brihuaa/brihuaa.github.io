@@ -68,7 +68,6 @@ function initFilters() {
     });
 }
 
-
 function filterCompetencies() {
     document.querySelectorAll('.competency-card').forEach(card => {
         const cardTechs = card.dataset.tech.split(',');
@@ -77,6 +76,7 @@ function filterCompetencies() {
         card.style.display = show ? 'block' : 'none';
     });
 }
+
 function toggleFilter(tech) {
     const btn = event.target.closest('button');
     btn.classList.toggle('active');
@@ -100,9 +100,8 @@ function toggleTheme() {
 }
 
 function redirectToCoverLetter() {
-    const basePath = window.location.pathname.replace('front_page.html', '');
     const page = currentLang === 'es' ? 'carta_presentacion.html' : 'cover_letter.html';
-    window.location.href = basePath + page;
+    window.location.href = page;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
