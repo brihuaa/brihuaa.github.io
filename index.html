@@ -12,19 +12,21 @@
     <div class="container">
         <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
         <div class="language-toggle" onclick="toggleLanguage()">ES</div>
-        <div class="coverletter-toggle" onclick="redirectToCoverLetter()" data-i18n="cover_letter">Carta</div>
+        <div class="coverletter-toggle" onclick="redirectToCoverLetter()" data-i18n="cover_letter">📝 Carta</div>
+        <div class="projects-toggle" onclick="redirectToProjects()" data-i18n="projects">📁 Proyectos</div>
         <h1 data-aos="zoom-in" data-i18n="skills_title">💻 Competencias Técnicas</h1>
         <div class="competency-grid">
             <!-- Lenguajes de Programación -->
             <div class="competency-card" data-aos="fade-right">
                 <h2 data-i18n="programming_languages">🚀 Lenguajes de Programación</h2>
                 <ul class="tech-list">
-                    <li><i class="devicon-cplusplus-plain colored"></i><span>C++</span></li>
-                    <li><i class="devicon-c-plain"></i><span>C</span></li>
-                    <li><i class="devicon-python-plain colored"></i><span>Python</span></li>
-                    <li><i class="devicon-java-plain colored"></i><span>Java</span></li>
-                    <li><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></li>
-                    <li><i class="devicon-ruby-plain colored"></i><span>Ruby</span></li>
+                    <li><i class="devicon-cplusplus-plain colored"></i><span onclick="redirectToProject('C++')">C++</span></li>
+                    <li><i class="devicon-c-plain"></i><span onclick="redirectToProject('C')">C</span></li>
+                    <li><i class="devicon-python-plain colored"></i><span onclick="redirectToProject('Python')">Python</span></li>
+                    <li><i class="devicon-java-plain colored"></i><span onclick="redirectToProject('Java')">Java</span></li>
+                    <li><i class="devicon-typescript-plain colored"></i><span onclick="redirectToProject('TypeScript')">TypeScript</span></li>
+                    <li><i class="devicon-ruby-plain colored"></i><span onclick="redirectToProject('Ruby')">Ruby</span></li>
+                    <li><i class="devicon-vhdl-plain colored"></i><span onclick="redirectToProject('VHDL')">VHDL</span></li>
                 </ul>
             </div>
             <!-- Desarrollo Web -->
@@ -53,6 +55,7 @@
                     <li><i class="devicon-qt-plain colored"></i><span>QT</span></li>
                     <li><i class="devicon-visualstudio-plain colored"></i><span>VisualStudio</span></li>
                     <li><i class="devicon-eclipse-plain-wordmark"></i><span>Eclipse</span></li>
+                    <li><i class="devicon-vivado-plain colored"></i><span>Vivado</span></li>
                 </ul>
             </div>
         </div>

@@ -94,6 +94,13 @@ function toggleTheme() {
 }
 
 function redirectToCoverLetter() {
-    const page = currentLang === 'es' ? 'presentation.html' : 'cover_letter.html';
-    window.location.href = page;
+    window.location.href = 'coverletter.html';
+}
+
+function redirectToProjects() {
+    window.location.href = 'projects.html';
+}
+
+function redirectToProject(language) {
+    window.location.href = `projects.html#${language}`;
 }
