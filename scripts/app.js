@@ -97,3 +97,8 @@ function redirectToCoverLetter() {
     const page = currentLang === 'es' ? 'carta_presentacion.html' : 'cover_letter.html';
     window.location.href = page;
 }
+
+function redirectToPresentation() {
+    const page = currentLang === 'es' ? 'presentacion.html' : 'presentation.html';
+    window.location.href = page;
+}

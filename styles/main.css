@@ -65,6 +65,20 @@ body {
     z-index: 1000;
 }
 
+.presentation-toggle {
+    position: fixed;
+    top: 20px;
+    right: 200px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 20px;
+    background: var(--card-bg);
+    border: none;
+    color: var(--text-color);
+    font-weight: bold;
+    z-index: 1000;
+}
+
 .competency-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -168,4 +182,23 @@ body {
     .tech-list span {
         font-size: 1rem;
     }
+}
+
+.presentation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.presentation-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.presentation-content {
+    line-height: 1.6;
+    color: var(--text-color);
 }
