@@ -94,11 +94,6 @@ function toggleTheme() {
 }
 
 function redirectToCoverLetter() {
-    const page = currentLang === 'es' ? 'carta_presentacion.html' : 'cover_letter.html';
-    window.location.href = page;
-}
-
-function redirectToPresentation() {
-    const page = currentLang === 'es' ? 'presentacion.html' : 'presentation.html';
+    const page = currentLang === 'es' ? 'presentation.html' : 'cover_letter.html';
     window.location.href = page;
 }
