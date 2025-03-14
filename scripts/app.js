@@ -1,4 +1,3 @@
-// Añadir al principio del archivo
 let currentLang = 'es';
 const translations = {
     "title": {
@@ -39,16 +38,11 @@ function updateContent() {
     document.title = translations['title'][currentLang];
 }
 
-// Modificar el evento DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     AOS.init({ duration: 1000 });
     initFilters();
-    
-    // Cargar tema
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.body.setAttribute('data-theme', savedTheme);
-    
-    // Cargar idioma
     currentLang = localStorage.getItem('language') || 'es';
     document.querySelector('.language-toggle').textContent = currentLang.toUpperCase();
     document.documentElement.lang = currentLang;
@@ -103,10 +97,3 @@ function redirectToCoverLetter() {
     const page = currentLang === 'es' ? 'carta_presentacion.html' : 'cover_letter.html';
     window.location.href = page;
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({ duration: 1000 });
-    initFilters();
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.body.setAttribute('data-theme', savedTheme);
-});
