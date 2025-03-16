@@ -27,8 +27,7 @@ body {
 
 .language-toggle,
 .coverletter-toggle,
-.projects-toggle,
-.presentation-toggle {
+.projects-toggle{
     position: fixed;
     top: 20px;
     cursor: pointer;

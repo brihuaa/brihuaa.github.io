@@ -104,7 +104,3 @@ function redirectToProjects() {
 function redirectToProject(language) {
     window.location.href = `projects.html#${language}`;
 }
-
-function redirectToPresentation() {
-    window.location.href = 'presentation.html';
-}
