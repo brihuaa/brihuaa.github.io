@@ -28,6 +28,10 @@ const translations = {
         "es": "📊 Presentación",
         "en": "📊 Cover Letter"
     }
+    "projects": {
+        "es": "📁 Proyectos",
+        "en": "📁 Proyects"
+    }
 };
 
 function updateContent() {
