@@ -31,6 +31,70 @@ const translations = {
     "projects": {
         "es": "📁 Proyectos",
         "en": "📁 Proyects"
+    },
+    "projects_title": {
+        "es": "📁 Proyectos",
+        "en": "📁 Projects"
+    },
+    "cpp_project_title": {
+        "es": "Proyecto en C++",
+        "en": "C++ Project"
+    },
+    "cpp_project_desc": {
+        "es": "Descripción del proyecto en C++.",
+        "en": "Description of the C++ project."
+    },
+    "c_project_title": {
+        "es": "Proyecto en C",
+        "en": "C Project"
+    },
+    "c_project_desc": {
+        "es": "Descripción del proyecto en C.",
+        "en": "Description of the C project."
+    },
+    "python_project_title": {
+        "es": "Proyecto en Python",
+        "en": "Python Project"
+    },
+    "python_project_desc": {
+        "es": "Descripción del proyecto en Python.",
+        "en": "Description of the Python project."
+    },
+    "java_project_title": {
+        "es": "Proyecto en Java",
+        "en": "Java Project"
+    },
+    "java_project_desc": {
+        "es": "Descripción del proyecto en Java.",
+        "en": "Description of the Java project."
+    },
+    "typescript_project_title": {
+        "es": "Proyecto de Desarrollo Web",
+        "en": "Web Development Project"
+    },
+    "typescript_project_desc": {
+        "es": "Aplicación web para buscar personajes de Star Wars usando la SWAPI.",
+        "en": "Web application to search for Star Wars characters using the SWAPI."
+    },
+    "ruby_project_title": {
+        "es": "Blockchain Simple en Ruby",
+        "en": "Simple Blockchain in Ruby"
+    },
+    "ruby_project_desc": {
+        "es": "Este proyecto implementa una blockchain simple en Ruby.",
+        "en": "This project implements a simple blockchain in Ruby."
+    },
+    "vhdl_project_title": {
+        "es": "Proyecto en VHDL",
+        "en": "VHDL Project"
+    },
+    "vhdl_project_desc": {
+        "es": "Descripción del proyecto en VHDL.",
+        "en": "Description of the VHDL project."
+    },
+    "view_on_github": {
+        "es": "Ver en GitHub",
+        "en": "View on GitHub"
     }
 };
 
