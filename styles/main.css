@@ -27,7 +27,6 @@ body {
 
 
 .language-toggle,
-.theme-toggle,
 .coverletter-toggle,
 .projects-toggle {
     position: fixed;
@@ -42,6 +41,18 @@ body {
     z-index: 1000;
 }
 
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: none;
+    color: var(--text-color);
+}
+
 .language-toggle {
     right: 80px;
 }
@@ -52,6 +63,10 @@ body {
 
 .presentation-toggle {
     right: 200px;
+}
+
+.projects-toggle {
+    right: 260px;
 }
 
 .competency-grid {
@@ -158,21 +173,3 @@ body {
     }
 }
 
-.presentation-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    background: var(--card-bg);
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.presentation-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.presentation-content {
-    line-height: 1.6;
-    color: var(--text-color);
-}
