@@ -110,5 +110,5 @@ function redirectToPresentation() {
 }
 
 function redirectToStart() {
-    window.location.href = 'coverletter.html';
+    window.location.href = 'index.html';
 }

@@ -53,7 +53,7 @@ body {
     color: var(--text-color);
 }
 
-.language-toggle {
+.language-toggle{
     right: 80px;
 }
 
@@ -61,7 +61,8 @@ body {
     right: 140px;
 }
 
-.projects-toggle {
+.projects-toggle,
+.return-toggle {
     right: 280px;
 }
 
