@@ -25,10 +25,10 @@ body {
     padding: 2rem;
 }
 
-
 .language-toggle,
 .coverletter-toggle,
-.projects-toggle {
+.projects-toggle,
+.presentation-toggle {
     position: fixed;
     top: 20px;
     cursor: pointer;
