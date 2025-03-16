@@ -57,13 +57,13 @@ body {
     right: 80px;
 }
 
-.coverletter-toggle {
+.coverletter-toggle,
+.return-toggle { 
     right: 140px;
 }
 
-.projects-toggle,
-.return-toggle {
-    right: 280px;
+.projects-toggle{
+    right: 328px;
 }
 
 .competency-grid {

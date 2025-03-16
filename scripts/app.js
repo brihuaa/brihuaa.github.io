@@ -27,7 +27,7 @@ const translations = {
     "cover_letter": {
         "es": "📊 Presentación",
         "en": "📊 Cover Letter"
-    }
+    },
     "projects": {
         "es": "📁 Proyectos",
         "en": "📁 Proyects"
