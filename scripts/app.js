@@ -108,3 +108,7 @@ function redirectToProject(language) {
 function redirectToPresentation() {
     window.location.href = 'presentation.html';
 }
+
+function redirectToStart() {
+    window.location.href = 'coverletter.html';
+}
