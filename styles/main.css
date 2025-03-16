@@ -25,21 +25,11 @@ body {
     padding: 2rem;
 }
 
-.theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-    background: var(--card-bg);
-    border: none;
-    color: var(--text-color);
-}
 
 .language-toggle,
+.theme-toggle,
 .coverletter-toggle,
-.presentation-toggle {
+.projects-toggle {
     position: fixed;
     top: 20px;
     cursor: pointer;
