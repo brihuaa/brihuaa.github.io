@@ -25,8 +25,8 @@ const translations = {
         "en": "🔷 Development Environments"
     },
     "cover_letter": {
-        "es": "📝 Carta",
-        "en": "📝 Cover Letter"
+        "es": "📊 Presentación",
+        "en": "📊 Cover Letter"
     }
 };
 
