@@ -30,7 +30,7 @@ const translations = {
     },
     "projects": {
         "es": "📁 Proyectos",
-        "en": "📁 Proyects"
+        "en": "📁 Projects"
     },
     "projects_title": {
         "es": "📁 Proyectos",
@@ -104,6 +104,7 @@ function updateContent() {
         element.textContent = translations[key][currentLang];
     });
     document.title = translations['title'][currentLang];
+    document.querySelector('.projects-toggle').textContent = translations['projects'][currentLang];
 }
 
 document.addEventListener('DOMContentLoaded', () => {

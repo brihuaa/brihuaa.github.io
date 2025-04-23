@@ -13,6 +13,32 @@
         <div class="language-toggle" onclick="toggleLanguage()">ES</div>
         <div class="return-toggle" onclick="redirectToStart()" data-i18n="return">Volver al Inicio</div>
         <h1 data-i18n="projects_title">📁 Proyectos</h1>
+        <div class="languages-container">
+            <h2>Programming Languages</h2>
+            <ul class="languages-list">
+                <li onclick="redirectToProject('C++')" style="cursor: pointer;">
+                    <i class="devicon-cplusplus-plain colored"></i><span>C++</span>
+                </li>
+                <li onclick="redirectToProject('C')" style="cursor: pointer;">
+                    <i class="devicon-c-plain"></i><span>C</span>
+                </li>
+                <li onclick="redirectToProject('Python')" style="cursor: pointer;">
+                    <i class="devicon-python-plain colored"></i><span>Python</span>
+                </li>
+                <li onclick="redirectToProject('Java')" style="cursor: pointer;">
+                    <i class="devicon-java-plain colored"></i><span>Java</span>
+                </li>
+                <li onclick="redirectToProject('TypeScript')" style="cursor: pointer;">
+                    <i class="devicon-typescript-plain colored"></i><span>TypeScript</span>
+                </li>
+                <li onclick="redirectToProject('Ruby')" style="cursor: pointer;">
+                    <i class="devicon-ruby-plain colored"></i><span>Ruby</span>
+                </li>
+                <li onclick="redirectToProject('VHDL')" style="cursor: pointer;">
+                    <i class="devicon-vhdl-plain colored"></i><span>VHDL</span>
+                </li>
+            </ul>
+        </div>
         <div class="projects-grid">
             <div class="project-card" id="C++">
                 <h2><i class="devicon-cplusplus-plain colored"></i> C++ Project</h2>
