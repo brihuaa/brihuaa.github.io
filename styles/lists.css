@@ -1,0 +1,73 @@
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+}
+
+.tech-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    transition: all 0.3s, background-color 0.3s;
+}
+
+.tech-list li:hover {
+    background: rgba(46, 204, 113, 0.2);
+    transition: background 0.4s ease;
+}
+
+.tech-list i {
+    font-size: 2rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.tech-list span {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tech-list span:hover {
+    background-color: transparent;
+}
+
+.languages-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.languages-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: var(--bg-color);
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.languages-list li:hover {
+    transform: scale(1.1);
+    background: var(--primary);
+    color: white;
+}
+
+.languages-list i {
+    font-size: 2rem;
+}
+
+.languages-list span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

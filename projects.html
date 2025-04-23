@@ -4,102 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="projects_title">Proyectos - Adrián Brihuega</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- Include external styles and icons -->
+    <link rel="stylesheet" href="styles/all.css">
 </head>
 <body>
     <div class="container">
+        <!-- Theme and language toggles -->
         <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
         <div class="language-toggle" onclick="toggleLanguage()">ES</div>
         <div class="return-toggle" onclick="redirectToStart()" data-i18n="return">Volver al Inicio</div>
+
+        <!-- Page title -->
         <h1 data-i18n="projects_title">📁 Proyectos</h1>
-        <div class="languages-container">
-            <h2>Programming Languages</h2>
+
+        <!-- Programming Languages Section -->
+        <div class="competency-card">
+            <h2 data-i18n="programming_languages">Programming Languages</h2>
             <ul class="languages-list">
-                <li onclick="redirectToProject('C++')" style="cursor: pointer;">
-                    <i class="devicon-cplusplus-plain colored"></i><span>C++</span>
-                </li>
-                <li onclick="redirectToProject('C')" style="cursor: pointer;">
-                    <i class="devicon-c-plain"></i><span>C</span>
-                </li>
-                <li onclick="redirectToProject('Python')" style="cursor: pointer;">
-                    <i class="devicon-python-plain colored"></i><span>Python</span>
-                </li>
-                <li onclick="redirectToProject('Java')" style="cursor: pointer;">
-                    <i class="devicon-java-plain colored"></i><span>Java</span>
-                </li>
-                <li onclick="redirectToProject('TypeScript')" style="cursor: pointer;">
-                    <i class="devicon-typescript-plain colored"></i><span>TypeScript</span>
-                </li>
-                <li onclick="redirectToProject('Ruby')" style="cursor: pointer;">
-                    <i class="devicon-ruby-plain colored"></i><span>Ruby</span>
-                </li>
-                <li onclick="redirectToProject('VHDL')" style="cursor: pointer;">
-                    <i class="devicon-vhdl-plain colored"></i><span>VHDL</span>
-                </li>
+                <script>
+                    const languages = [
+                        { name: 'C++', icon: 'cplusplus', color: 'colored' },
+                        { name: 'C', icon: 'c', color: '' },
+                        { name: 'Python', icon: 'python', color: 'colored' },
+                        { name: 'Java', icon: 'java', color: 'colored' },
+                        { name: 'TypeScript', icon: 'typescript', color: 'colored' },
+                        { name: 'Ruby', icon: 'ruby', color: 'colored' },
+                        { name: 'VHDL', icon: 'vhdl', color: 'colored' }
+                    ];
+
+                    document.write(
+                        languages.map(lang => `
+                            <li onclick="redirectToProject('${lang.name}')" style="cursor: pointer;">
+                                <i class="devicon-${lang.icon}-plain ${lang.color}"></i><span>${lang.name}</span>
+                            </li>
+                        `).join('')
+                    );
+                </script>
             </ul>
         </div>
+
+        <!-- Web Development Section -->
+        <div class="competency-card">
+            <h2 data-i18n="web_development">Web Development</h2>
+            <ul class="languages-list">
+                <script>
+                    const webTools = [
+                        { name: 'HTML_CSS', icons: ['html5', 'css3'], label: 'HTML5 & CSS3' },
+                        { name: 'React', icons: ['react'], label: 'React' },
+                        { name: 'JavaScript', icons: ['javascript'], label: 'JavaScript' }
+                    ];
+
+                    document.write(
+                        webTools.map(tool => `
+                            <li onclick="redirectToProject('${tool.name}')" style="cursor: pointer;">
+                                ${tool.icons.map(icon => `<i class="devicon-${icon}-plain colored"></i>`).join('')}
+                                <span data-i18n="${tool.name.toLowerCase()}">${tool.label}</span>
+                            </li>
+                        `).join('')
+                    );
+                </script>
+            </ul>
+        </div>
+
+        <!-- Projects Grid -->
         <div class="projects-grid">
-            <div class="project-card" id="C++">
-                <h2><i class="devicon-cplusplus-plain colored"></i> C++ Project</h2>
-                <div class="project-preview">
-                    <h3 data-i18n="cpp_project_title"></h3>
-                    <p data-i18n="cpp_project_desc"></p>
-                    <a href="" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>
-                </div>
-            </div>
-            <div class="project-card" id="C">
-                <h2><i class="devicon-c-plain"></i> C Project</h2>
-                <div class="project-preview">
-                    <h3 data-i18n="c_project_title"></h3>
-                    <p data-i18n="c_project_desc"></p>
-                    <a href="" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>
-                </div>
-            </div>
-            <div class="project-card" id="Python">
-                <h2><i class="devicon-python-plain colored"></i> Python Project</h2>
-                <div class="project-preview">
-                    <h3 data-i18n="python_project_title"></h3>
-                    <p data-i18n="python_project_desc"></p>
-                    <a href="" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>
-                </div>
-            </div>
-            <div class="project-card" id="Java">
-                <h2><i class="devicon-java-plain colored"></i> Java Project</h2>
-                <div class="project-preview">
-                    <h3 data-i18n="java_project_title">Calculadora Java</h3>
-                    <p data-i18n="java_project_desc">Aplicación de cálculo distribuido utilizando Java RMI</p>
-                    <a href="https://github.com/brihuaa/Practica2SD" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>
-                </div>
-            </div>
-            <div class="project-card" id="TypeScript">
-                <h2><i class="devicon-typescript-plain colored"></i> TypeScript Project</h2>
-                <div class="project-preview">
-                    <h3 data-i18n="typescript_project_title">Web Development Project</h3>
-                    <p data-i18n="typescript_project_desc">Aplicación web para buscar personajes de Star Wars usando la SWAPI.</p>
-                    <a href="https://github.com/brihuaa/P2-Web" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>
-                </div>
-            </div>
-            <div class="project-card" id="Ruby">
-                <h2><i class="devicon-ruby-plain colored"></i> Ruby Project</h2>
-                <div class="project-preview">
-                    <h3 data-i18n="ruby_project_title">Simple Blockchain in Ruby</h3>
-                    <p data-i18n="ruby_project_desc">Este proyecto implementa una blockchain simple en Ruby.</p>
-                    <a href="https://github.com/brihuaa/simple-blockchain-in-ruby" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>
-                </div>
-            </div>
-            <div class="project-card" id="VHDL">
-                <h2><i class="devicon-vhdl-plain colored"></i> VHDL Project</h2>
-                <div class="project-preview">
-                    <h3 data-i18n="vhdl_project_title"></h3>
-                    <p data-i18n="vhdl_project_desc">Monitor de movimiento que utiliza sensores de movimiento y un LED NeoPixel para indicar el estado de detección de movimiento.</p>
-                    <a href="https://github.com/brihuaa/Proyecto-VHDL" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>
-                </div>
-            </div>
+            <script>
+                const projects = [
+                    { id: 'C++', icon: 'cplusplus', title: 'C++ Project', descKey: 'cpp_project_desc', github: '' },
+                    { id: 'C', icon: 'c', title: 'C Project', descKey: 'c_project_desc', github: '' },
+                    { id: 'Python', icon: 'python', title: 'Python Project', descKey: 'python_project_desc', github: '' },
+                    { id: 'Java', icon: 'java', title: 'Java Project', descKey: 'java_project_desc', github: 'https://github.com/brihuaa/Practica2SD' },
+                    { id: 'TypeScript', icon: 'typescript', title: 'TypeScript Project', descKey: 'typescript_project_desc', github: 'https://github.com/brihuaa/P2-Web' },
+                    { id: 'Ruby', icon: 'ruby', title: 'Ruby Project', descKey: 'ruby_project_desc', github: 'https://github.com/brihuaa/simple-blockchain-in-ruby' },
+                    { id: 'VHDL', icon: 'vhdl', title: 'VHDL Project', descKey: 'vhdl_project_desc', github: 'https://github.com/brihuaa/Proyecto-VHDL' },
+                    { id: 'HTML_CSS', icon: 'html5 css3', title: 'HTML & CSS Project', descKey: 'html_css_project_desc', github: 'https://github.com/brihuaa/portfolio-website' },
+                    { id: 'React', icon: 'react', title: 'React Project', descKey: 'react_project_desc', github: 'https://github.com/brihuaa/react-task-manager' },
+                    { id: 'JavaScript', icon: 'javascript', title: 'JavaScript Project', descKey: 'javascript_project_desc', github: 'https://github.com/brihuaa/weather-app' }
+                ];
+
+                document.write(
+                    projects.map(project => `
+                        <div class="project-card" id="${project.id}">
+                            <h2>
+                                ${project.icon.split(' ').map(icon => `<i class="devicon-${icon}-plain colored"></i>`).join(' ')}
+                                ${project.title}
+                            </h2>
+                            <div class="project-preview">
+                                <h3 data-i18n="${project.id.toLowerCase()}_project_title"></h3>
+                                <p data-i18n="${project.descKey}"></p>
+                                <a href="${project.github}" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>
+                            </div>
+                        </div>
+                    `).join('')
+                );
+            </script>
         </div>
     </div>
+
+    <!-- Include external scripts -->
     <script src="scripts/app.js"></script>
     <script>
+        // Highlight the project card based on the URL hash
         window.addEventListener('DOMContentLoaded', () => {
             const projectId = window.location.hash.slice(1);
             if (projectId) {

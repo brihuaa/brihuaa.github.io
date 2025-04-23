@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="title">Competencias Técnicas - Adrián Brihuega</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/all.css">
 </head>
 <body>
     <div class="container">
@@ -16,84 +15,71 @@
         <div class="projects-toggle" onclick="redirectToProjects()" data-i18n="projects">📁 Proyectos</div>
         <h1 data-aos="zoom-in" data-i18n="skills_title">💻 Competencias Técnicas</h1>
         <div class="competency-grid">
-            <!-- Lenguajes de Programación -->
-            <div class="competency-card" data-aos="fade-right">
-                <h2 data-i18n="programming_languages">🚀 Lenguajes de Programación</h2>
-                <ul class="tech-list">
-                    <li onclick="redirectToProject('C++')" style="cursor: pointer;">
-                        <i class="devicon-cplusplus-plain colored"></i><span>C++</span>
-                    </li>
-                    <li onclick="redirectToProject('C')" style="cursor: pointer;">
-                        <i class="devicon-c-plain"></i><span>C</span>
-                    </li>
-                    <li onclick="redirectToProject('Python')" style="cursor: pointer;">
-                        <i class="devicon-python-plain colored"></i><span>Python</span>
-                    </li>
-                    <li onclick="redirectToProject('Java')" style="cursor: pointer;">
-                        <i class="devicon-java-plain colored"></i><span>Java</span>
-                    </li>
-                    <li onclick="redirectToProject('TypeScript')" style="cursor: pointer;">
-                        <i class="devicon-typescript-plain colored"></i><span>TypeScript</span>
-                    </li>
-                    <li onclick="redirectToProject('Ruby')" style="cursor: pointer;">
-                        <i class="devicon-ruby-plain colored"></i><span>Ruby</span>
-                    </li>
-                    <li onclick="redirectToProject('VHDL')" style="cursor: pointer;">
-                        <i class="devicon-vhdl-plain colored"></i><span>VHDL</span>
-                    </li>
-                </ul>
-            </div>
-            <!-- Desarrollo Web -->
-            <div class="competency-card" data-aos="fade-left">
-                <h2 data-i18n="web_development">🌐 Desarrollo Web</h2>
-                <ul class="tech-list">
-                    <li onclick="redirectToProject('HTML5')" style="cursor: pointer;">
-                        <i class="devicon-html5-plain colored"></i><span>HTML5</span>
-                    </li>
-                    <li onclick="redirectToProject('CSS3')" style="cursor: pointer;">
-                        <i class="devicon-css3-plain colored"></i><span>CSS3</span>
-                    </li>
-                    <li onclick="redirectToProject('React')" style="cursor: pointer;">
-                        <i class="devicon-react-original colored"></i><span>React</span>
-                    </li>
-                    <li onclick="redirectToProject('JavaScript')" style="cursor: pointer;">
-                        <i class="devicon-javascript-plain colored"></i><span>JavaScript</span>
-                    </li>
-                </ul>
-            </div>
-            <!-- Bases de Datos -->
-            <div class="competency-card" data-aos="fade-up">
-                <h2 data-i18n="databases">🗃️ Bases de Datos</h2>
-                <ul class="tech-list">
-                    <li onclick="redirectToProject('MySQL')" style="cursor: pointer;">
-                        <i class="devicon-mysql-plain colored"></i><span>MySQL</span>
-                    </li>
-                    <li onclick="redirectToProject('PostgreSQL')" style="cursor: pointer;">
-                        <i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span>
-                    </li>
-                    <li onclick="redirectToProject('MongoDB')" style="cursor: pointer;">
-                        <i class="devicon-mongodb-plain colored"></i><span>MongoDB</span>
-                    </li>
-                </ul>
-            </div>
-            <!-- Entornos -->
-            <div class="competency-card" data-aos="fade-up">
-                <h2 data-i18n="environments">🔷 Entornos</h2>
-                <ul class="tech-list">
-                    <li onclick="redirectToProject('QT')" style="cursor: pointer;">
-                        <i class="devicon-qt-plain colored"></i><span>QT</span>
-                    </li>
-                    <li onclick="redirectToProject('VisualStudio')" style="cursor: pointer;">
-                        <i class="devicon-visualstudio-plain colored"></i><span>VisualStudio</span>
-                    </li>
-                    <li onclick="redirectToProject('Eclipse')" style="cursor: pointer;">
-                        <i class="devicon-eclipse-plain-wordmark"></i><span>Eclipse</span>
-                    </li>
-                    <li onclick="redirectToProject('Vivado')" style="cursor: pointer;">
-                        <i class="devicon-vivado-plain colored"></i><span>Vivado</span>
-                    </li>
-                </ul>
-            </div>
+            <script>
+                const competencies = [
+                    {
+                        titleKey: "programming_languages",
+                        icon: "🚀",
+                        items: [
+                            { name: "C++", icon: "cplusplus" },
+                            { name: "C", icon: "c" },
+                            { name: "Python", icon: "python" },
+                            { name: "Java", icon: "java" },
+                            { name: "TypeScript", icon: "typescript" },
+                            { name: "Ruby", icon: "ruby" },
+                            { name: "VHDL", icon: "vhdl" }
+                        ],
+                        animation: "fade-right"
+                    },
+                    {
+                        titleKey: "web_development",
+                        icon: "🌐",
+                        items: [
+                            { name: "HTML5", icon: "html5" },
+                            { name: "CSS3", icon: "css3" },
+                            { name: "React", icon: "react" },
+                            { name: "JavaScript", icon: "javascript" }
+                        ],
+                        animation: "fade-left"
+                    },
+                    {
+                        titleKey: "databases",
+                        icon: "🗃️",
+                        items: [
+                            { name: "MySQL", icon: "mysql" },
+                            { name: "PostgreSQL", icon: "postgresql" },
+                            { name: "MongoDB", icon: "mongodb" }
+                        ],
+                        animation: "fade-up"
+                    },
+                    {
+                        titleKey: "environments",
+                        icon: "🔷",
+                        items: [
+                            { name: "QT", icon: "qt" },
+                            { name: "VisualStudio", icon: "visualstudio" },
+                            { name: "Eclipse", icon: "eclipse" },
+                            { name: "Vivado", icon: "vivado" }
+                        ],
+                        animation: "fade-up"
+                    }
+                ];
+
+                document.write(
+                    competencies.map(comp => `
+                        <div class="competency-card" data-aos="${comp.animation}">
+                            <h2 data-i18n="${comp.titleKey}">${comp.icon} ${comp.titleKey.replace('_', ' ')}</h2>
+                            <ul class="tech-list">
+                                ${comp.items.map(item => `
+                                    <li onclick="redirectToProject('${item.name}')" style="cursor: pointer;">
+                                        <i class="devicon-${item.icon}-plain colored"></i><span>${item.name}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    `).join('')
+                );
+            </script>
         </div>
     </div>
     <script src="scripts/app.js"></script>

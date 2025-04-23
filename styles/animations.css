@@ -1,0 +1,8 @@
+@keyframes fadeHighlight {
+    from {
+        background: rgba(241, 196, 15, 0.8);
+    }
+    to {
+        background: var(--card-bg);
+    }
+}
