@@ -34,11 +34,13 @@ body {
     cursor: pointer;
     padding: 10px 15px;
     border-radius: 20px;
-    background: var(--card-bg);
+    /* Updated to use a transparent background */
+    background: rgba(45, 45, 45, 0.8);
     border: none;
     color: var(--text-color);
     font-weight: bold;
     z-index: 1000;
+    transition: opacity 0.3s, background 0.3s;
 }
 
 .theme-toggle {
@@ -66,9 +68,18 @@ body {
     right: 300px;
 }
 
+/* Hidden state for toggles when scrolling */
+.language-toggle.hidden,
+.coverletter-toggle.hidden,
+.projects-toggle.hidden,
+.return-toggle.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
 .competency-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -153,12 +164,36 @@ body {
 .tech-list span {
     color: var(--text-color);
     font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
+.tech-list span:hover {
+    background-color: rgba(241, 196, 15, 0.3);
+}
+
+/* New keyframes for fading highlight */
+@keyframes fadeHighlight {
+    from {
+        background: rgba(241, 196, 15, 0.8); /* brighter yellow */
+    }
+    to {
+        background: var(--card-bg); /* default card background */
+    }
+}
+
+/* Update highlighted project card to ensure round borders */
+.project-card.highlight {
+    border-radius: 15px; /* match the card's roundness */
+    border: 2px solid rgba(241, 196, 15, 0.8); /* accentuate the highlight */
+    animation: fadeHighlight 3s forwards;
+}
+
+/* Make project-preview have the same round borders */
 .project-preview {
     background: var(--card-bg);
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 1rem;
 }

@@ -73,5 +73,17 @@
         </div>
     </div>
     <script src="scripts/app.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const projectId = window.location.hash.slice(1);
+            if (projectId) {
+                const projectCard = document.getElementById(projectId);
+                if (projectCard) {
+                    projectCard.classList.add('highlight');
+                    projectCard.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
 </body>
 </html>

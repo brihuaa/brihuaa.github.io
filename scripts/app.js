@@ -115,6 +115,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.language-toggle').textContent = currentLang.toUpperCase();
     document.documentElement.lang = currentLang;
     updateContent();
+
+    // Add scroll listener to toggle hidden class for fixed elements
+    document.addEventListener('scroll', () => {
+        const toggles = document.querySelectorAll('.language-toggle, .coverletter-toggle, .projects-toggle, .return-toggle');
+        if(window.scrollY > 50) {
+            toggles.forEach(el => el.classList.add('hidden'));
+        } else {
+            toggles.forEach(el => el.classList.remove('hidden'));
+        }
+    });
 });
 
 let activeFilters = new Set();
