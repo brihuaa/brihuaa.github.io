@@ -131,6 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
             toggles.forEach(el => el.classList.remove('hidden'));
         }
     });
+
+    // Animate language proficiency circles
+    document.querySelectorAll('.language-circle').forEach(circle => {
+        const level = circle.getAttribute('data-level');
+        circle.style.setProperty('--level', level);
+    });
 });
 
 let activeFilters = new Set();

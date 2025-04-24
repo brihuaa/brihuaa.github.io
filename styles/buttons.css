@@ -1,9 +1,25 @@
+.button-container {
+    display: flex;
+    gap: 1rem;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    align-items: center;
+    justify-content: flex-end; /* Align buttons from right to left */
+}
+
+.theme-toggle,
+.language-toggle,
+.projects-toggle,
+.return-toggle {
+    position: static;
+}
+
 .language-toggle,
 .coverletter-toggle,
 .projects-toggle,
 .return-toggle {
-    position: fixed;
-    top: 20px;
     cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 8px;
@@ -11,7 +27,6 @@
     border: 1px solid var(--primary);
     color: var(--text-color);
     font-weight: normal;
-    z-index: 1000;
     transition: transform 0.2s, background 0.2s, color 0.2s;
 }
 
@@ -25,35 +40,18 @@
 }
 
 .theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
     padding: 10px;
     border-radius: 50%;
     background: var(--card-bg);
     border: 1px solid var(--primary);
     color: var(--text-color);
-    transition: transform 0.2s, background 0.2s, color 0.2s;
+    font-weight: normal;
 }
 
 .theme-toggle:hover {
     transform: scale(1.05);
     background: var(--primary);
     color: var(--bg-color);
-}
-
-.language-toggle {
-    right: 100px;
-}
-
-.coverletter-toggle,
-.return-toggle {
-    right: 180px;
-}
-
-.projects-toggle {
-    right: 360px;
 }
 
 .language-toggle.hidden,

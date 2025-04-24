@@ -10,9 +10,11 @@
 <body>
     <div class="container">
         <!-- Theme and language toggles -->
-        <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
-        <div class="language-toggle" onclick="toggleLanguage()">ES</div>
-        <div class="return-toggle" onclick="redirectToStart()" data-i18n="return">Volver al Inicio</div>
+        <div class="button-container">
+            <div class="return-toggle" onclick="redirectToStart()" data-i18n="return">🔙 Volver al Inicio</div>
+            <div class="language-toggle" onclick="toggleLanguage()">ES</div>
+            <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+        </div>
 
         <!-- Page title -->
         <h1 data-i18n="projects_title">📁 Proyectos</h1>
@@ -83,7 +85,7 @@
                     { id: 'Java', icon: 'java', title: 'Java Project', descKey: 'java_project_desc', github: 'https://github.com/brihuaa/Practica2SD' },
                     { id: 'TypeScript', icon: 'typescript', title: 'TypeScript Project', descKey: 'typescript_project_desc', github: 'https://github.com/brihuaa/P2-Web' },
                     { id: 'Ruby', icon: 'ruby', title: 'Ruby Project', descKey: 'ruby_project_desc', github: 'https://github.com/brihuaa/simple-blockchain-in-ruby' },
-                    { id: 'VHDL', icon: 'vhdl', title: 'VHDL Project', descKey: 'vhdl_project_desc', github: 'https://github.com/brihuaa/Proyecto-VHDL' },
+                    { id: 'VHDL',icon: 'vhdl',title: 'VHDL Project',descKey: 'vhdl_project_desc',github: 'https://github.com/brihuaa/Proyecto-VHDL',logo: 'assets/images/vhdl.png'},
                     { id: 'HTML_CSS', icon: 'html5 css3', title: 'HTML & CSS Project', descKey: 'html_css_project_desc', github: 'https://github.com/brihuaa/portfolio-website' },
                     { id: 'React', icon: 'react', title: 'React Project', descKey: 'react_project_desc', github: 'https://github.com/brihuaa/react-task-manager' },
                     { id: 'JavaScript', icon: 'javascript', title: 'JavaScript Project', descKey: 'javascript_project_desc', github: 'https://github.com/brihuaa/weather-app' }
@@ -93,7 +95,7 @@
                     projects.map(project => `
                         <div class="project-card" id="${project.id}">
                             <h2>
-                                ${project.icon.split(' ').map(icon => `<i class="devicon-${icon}-plain colored"></i>`).join(' ')}
+                                ${project.logo ? `<img src="${project.logo}" alt="${project.title} Logo" style="width: 40px; height: 40px; object-fit: contain; vertical-align: middle;">` : project.icon.split(' ').map(icon => `<i class="devicon-${icon}-plain colored"></i>`).join(' ')}
                                 ${project.title}
                             </h2>
                             <div class="project-preview">
