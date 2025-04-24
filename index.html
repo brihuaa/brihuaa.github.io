@@ -72,7 +72,8 @@
                             <ul class="tech-list">
                                 ${comp.items.map(item => `
                                     <li onclick="redirectToProject('${item.name}')" style="cursor: pointer;">
-                                        <i class="devicon-${item.icon}-plain colored"></i><span>${item.name}</span>
+                                        ${item.name === "VHDL" ? `<img src="assets/images/vhdl.png" alt="VHDL Logo" style="width: 40px; height: 40px; object-fit: contain;">` : `<i class="devicon-${item.icon}-plain colored"></i>`}
+                                        <span>${item.name}</span>
                                     </li>
                                 `).join('')}
                             </ul>
