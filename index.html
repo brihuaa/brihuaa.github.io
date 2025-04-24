@@ -28,12 +28,12 @@
 
             <div class="competency-grid">
                 <div class="competency-card" style="grid-column: span 2;" data-aos="fade-right">
-                    <h2>Introducción</h2>
+                    <h2>📖 Introducción</h2>
                     <p>Hola, soy Adrián Brihuega, un apasionado de la tecnología y el desarrollo de software...</p>
                 </div>
 
                 <div class="competency-card" style="grid-column: span 2;" data-aos="fade-left">
-                    <h2>Educación</h2>
+                    <h2>🎓 Educación</h2>
                     <div class="education-list">
                         <div>
                             <img src="assets/images/nebrija.png" alt="Logo Universidad Antonio de Nebrija" class="education-logo">
@@ -43,26 +43,26 @@
                 </div>
 
                 <div class="competency-card" style="grid-column: span 2;" data-aos="fade-up">
-                    <h2>Diplomas</h2>
+                    <h2>📜 Diplomas</h2>
                     <ul>
                         <li>Certificado en Transformación Digital</li>
                     </ul>
                 </div>
 
                 <div class="competency-card" style="grid-column: span 2;" data-aos="fade-up">
-                    <h2>Niveles de Idiomas</h2>
+                    <h2>🌍 Idiomas</h2>
                     <div class="language-levels">
                         <script>
                             const languages = [
-                                { name: "Español", level: 5, label: "Nativo" },
-                                { name: "Inglés", level: 4, label: "C1" },
-                                { name: "Chino", level: 1, label: "A1" }
+                                { name: "Español", level: 5, label: "Nativo", flag: "🇪🇸" },
+                                { name: "Inglés", level: 4, label: "C1", flag: "🇬🇧" },
+                                { name: "Chino", level: 1, label: "A1", flag: "🇨🇳" }
                             ];
 
                             document.write(
                                 languages.map(lang => `
                                     <div class="language-item">
-                                        <span class="language-name">${lang.name}</span>
+                                        <span class="language-name">${lang.flag} ${lang.name}</span>
                                         <div class="progress-bar">
                                             ${Array.from({ length: 5 }, (_, i) => `
                                                 <div class="square ${i < lang.level ? 'filled' : ''}"></div>
