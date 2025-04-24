@@ -57,3 +57,14 @@
 .project-preview a:hover {
     background: var(--secondary);
 }
+
+.centered-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.centered-title h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+}

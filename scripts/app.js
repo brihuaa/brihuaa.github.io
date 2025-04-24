@@ -101,10 +101,15 @@ const translations = {
 function updateContent() {
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        element.textContent = translations[key][currentLang];
+        if (translations[key]) {
+            element.textContent = translations[key][currentLang];
+        }
     });
     document.title = translations['title'][currentLang];
-    document.querySelector('.projects-toggle').textContent = translations['projects'][currentLang];
+    const projectsToggle = document.querySelector('.projects-toggle');
+    if (projectsToggle) {
+        projectsToggle.textContent = translations['projects'][currentLang];
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
