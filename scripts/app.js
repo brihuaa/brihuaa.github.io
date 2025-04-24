@@ -8,19 +8,19 @@ const translations = {
         "es": "💻 Competencias Técnicas",
         "en": "💻 Technical Skills"
     },
-    "programming_languages": {
+    "Programming_Languages": {
         "es": "🚀 Lenguajes de Programación",
         "en": "🚀 Programming Languages"
     },
-    "web_development": {
+    "Web_Development": {
         "es": "🌐 Desarrollo Web",
         "en": "🌐 Web Development"
     },
-    "databases": {
+    "Databases": {
         "es": "🗃️ Bases de Datos",
         "en": "🗃️ Databases"
     },
-    "environments": {
+    "Development_Enviroments": {
         "es": "🔷 Entornos",
         "en": "🔷 Development Environments"
     },
