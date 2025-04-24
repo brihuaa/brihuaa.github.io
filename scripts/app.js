@@ -122,6 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.lang = currentLang;
     updateContent();
 
+    // Easter egg in the console
+    console.log('%c¡Hola! Esta página fue creada por Adrián Brihuega. 👨‍💻', 'color: #2ecc71; font-size: 16px; font-weight: bold;');
+    console.log('%cGitHub: https://github.com/brihuaa', 'color: #3498db; font-size: 14px;');
+
     // Add scroll listener to toggle hidden class for fixed elements
     document.addEventListener('scroll', () => {
         const toggles = document.querySelectorAll('.language-toggle, .coverletter-toggle, .projects-toggle, .return-toggle');
