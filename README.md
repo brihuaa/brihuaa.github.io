@@ -15,12 +15,6 @@ styles, animations, and dynamic content generation.
 3. Serve the project locally using a live server or open `index.html` directly
    in your browser.
 
-## Improvements
-
-- **Dynamic Content Generation**: The project previously used `document.write`
-  for generating dynamic content. This is being replaced with modern DOM
-  manipulation methods like `innerHTML` and `createElement` for better
-  maintainability and compatibility.
 
 ## Usage
 
