@@ -27,19 +27,18 @@
             <ul class="languages-list">
                 <script>
                     const languages = [
-                        { name: 'C++', logo: 'assets/images/cplusplus.png' },
-                        { name: 'C', logo: 'assets/images/c.png' },
-                        { name: 'Python', logo: 'assets/images/python.png' },
-                        { name: 'Java', logo: 'assets/images/java.png' },
-                        { name: 'TypeScript', logo: 'assets/images/typescript.png' },
-                        { name: 'Ruby', logo: 'assets/images/ruby.png' }
+                        { name: 'C++', icon: 'cplusplus', color: 'colored' },
+                        { name: 'C', icon: 'c', color: '' },
+                        { name: 'Python', icon: 'python', color: 'colored' },
+                        { name: 'Java', icon: 'java', color: 'colored' },
+                        { name: 'TypeScript', icon: 'typescript', color: 'colored' },
+                        { name: 'Ruby', icon: 'ruby', color: 'colored' },
                     ];
 
                     document.write(
                         languages.map(lang => `
                             <li onclick="redirectToProject('${lang.name}')" style="cursor: pointer;">
-                                <img src="${lang.logo}" alt="${lang.name} Logo" style="width: 40px; height: 40px; object-fit: contain;">
-                                <span>${lang.name}</span>
+                                <i class="devicon-${lang.icon}-plain ${lang.color}"></i><span>${lang.name}</span>
                             </li>
                         `).join('')
                     );
@@ -59,15 +58,15 @@
             <ul class="languages-list">
                 <script>
                     const webTools = [
-                        { name: 'HTML_CSS', logos: ['assets/images/html5.png', 'assets/images/css3.png'], label: 'HTML5 & CSS3' },
-                        { name: 'React', logos: ['assets/images/react.png'], label: 'React' },
-                        { name: 'JavaScript', logos: ['assets/images/javascript.png'], label: 'JavaScript' }
+                        { name: 'HTML_CSS', icons: ['html5', 'css3'], label: 'HTML5 & CSS3' },
+                        { name: 'React', icons: ['react'], label: 'React' },
+                        { name: 'JavaScript', icons: ['javascript'], label: 'JavaScript' }
                     ];
 
                     document.write(
                         webTools.map(tool => `
                             <li onclick="redirectToProject('${tool.name}')" style="cursor: pointer;">
-                                ${tool.logos.map(logo => `<img src="${logo}" alt="${tool.label} Logo" style="width: 40px; height: 40px; object-fit: contain;">`).join('')}
+                                ${tool.icons.map(icon => `<i class="devicon-${icon}-plain colored"></i>`).join('')}
                                 <span data-i18n="${tool.name.toLowerCase()}">${tool.label}</span>
                             </li>
                         `).join('')
@@ -113,15 +112,15 @@
 
         <div class="social-links">
             <a href="https://github.com/brihuaa" target="_blank" rel="noopener noreferrer">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/github.svg" alt="GitHub" class="social-icon">
+                <img src="assets/images/github-logo.svg" alt="GitHub" class="social-icon">
             </a>
             <a href="https://codepen.io/brihuaa" target="_blank" rel="noopener noreferrer">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/codepen.svg" alt="CodePen" class="social-icon">
+                <img src="assets/images/codepen-logo.svg" alt="CodePen" class="social-icon">
             </a>
             <a href="https://www.linkedin.com/in/adrian-brihuega-sanchez-344707291/" target="_blank" rel="noopener noreferrer">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+                <img src="assets/images/linkedin-logo.svg" alt="LinkedIn" class="social-icon">
             </a>
-        </div>
+    </div>
 
     <script src="scripts/app.js"></script>
     <script>
