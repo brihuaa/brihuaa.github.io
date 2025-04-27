@@ -59,6 +59,7 @@
 
                             document.write(
                                 languages.map(lang => `
+
                                     <div class="language-item">
                                         <span class="language-name">${lang.flag} ${lang.name}</span>
                                         <div class="progress-bar">
@@ -85,13 +86,13 @@
                         titleKey: "Programming_Languages",
                         icon: "🚀",
                         items: [
-                            { name: "C++", icon: "cplusplus" },
-                            { name: "C", icon: "c" },
-                            { name: "Python", icon: "python" },
-                            { name: "Java", icon: "java" },
-                            { name: "TypeScript", icon: "typescript" },
-                            { name: "Ruby", icon: "ruby" },
-                            { name: "VHDL", icon: "vhdl", logo: "assets/images/vhdl.png" }
+                            { name: "C++", logo: "assets/images/cplusplus.png" },
+                            { name: "C", logo: "assets/images/c.png" },
+                            { name: "Python", logo: "assets/images/python.png" },
+                            { name: "Java", logo: "assets/images/java.png" },
+                            { name: "TypeScript", logo: "assets/images/typescript.png" },
+                            { name: "Ruby", logo: "assets/images/ruby.png" },
+                            { name: "VHDL", logo: "assets/images/vhdl.png" }
                         ],
                         animation: "fade-right"
                     },
@@ -99,10 +100,10 @@
                         titleKey: "Web_Development",
                         icon: "🌐",
                         items: [
-                            { name: "HTML5", icon: "html5" },
-                            { name: "CSS3", icon: "css3" },
-                            { name: "React", icon: "react" },
-                            { name: "JavaScript", icon: "javascript" }
+                            { name: "HTML5", logo: "assets/images/html5.png" },
+                            { name: "CSS3", logo: "assets/images/css3.png" },
+                            { name: "React", logo: "assets/images/react.png" },
+                            { name: "JavaScript", logo: "assets/images/javascript.png" }
                         ],
                         animation: "fade-left"
                     },
@@ -110,9 +111,9 @@
                         titleKey: "Databases",
                         icon: "🗃️",
                         items: [
-                            { name: "MySQL", icon: "mysql" },
-                            { name: "PostgreSQL", icon: "postgresql" },
-                            { name: "MongoDB", icon: "mongodb" }
+                            { name: "MySQL", logo: "assets/images/mysql.png" },
+                            { name: "PostgreSQL", logo: "assets/images/postgresql.png" },
+                            { name: "MongoDB", logo: "assets/images/mongodb.png" }
                         ],
                         animation: "fade-up"
                     },
@@ -120,10 +121,10 @@
                         titleKey: "Development_Enviroments",
                         icon: "🔷",
                         items: [
-                            { name: "QT", icon: "qt" },
-                            { name: "VisualStudio", icon: "visualstudio" },
-                            { name: "Eclipse", icon: "eclipse", logo: "assets/images/eclipse.png" },
-                            { name: "Vivado", icon: "vivado", logo: "assets/images/vivado.png" }
+                            { name: "QT", logo: "assets/images/qt.png" },
+                            { name: "VisualStudio", logo: "assets/images/visualstudio.png" },
+                            { name: "Eclipse", logo: "assets/images/eclipse.png" },
+                            { name: "Vivado", logo: "assets/images/vivado.png" }
                         ],
                         animation: "fade-up"
                     }
@@ -136,7 +137,7 @@
                             <ul class="tech-list">
                                 ${comp.items.map(item => `
                                     <li onclick="redirectToProject('${item.name}')" style="cursor: pointer;">
-                                        ${item.logo ? `<img src="${item.logo}" alt="${item.name} Logo" style="width: 40px; height: 40px; object-fit: contain;">` : `<i class="devicon-${item.icon}-plain colored"></i>`}
+                                        <img src="${item.logo}" alt="${item.name} Logo" style="width: 40px; height: 40px; object-fit: contain;">
                                         <span>${item.name}</span>
                                     </li>
                                 `).join('')}

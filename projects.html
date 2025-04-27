@@ -27,18 +27,19 @@
             <ul class="languages-list">
                 <script>
                     const languages = [
-                        { name: 'C++', icon: 'cplusplus', color: 'colored' },
-                        { name: 'C', icon: 'c', color: '' },
-                        { name: 'Python', icon: 'python', color: 'colored' },
-                        { name: 'Java', icon: 'java', color: 'colored' },
-                        { name: 'TypeScript', icon: 'typescript', color: 'colored' },
-                        { name: 'Ruby', icon: 'ruby', color: 'colored' },
+                        { name: 'C++', logo: 'assets/images/cplusplus.png' },
+                        { name: 'C', logo: 'assets/images/c.png' },
+                        { name: 'Python', logo: 'assets/images/python.png' },
+                        { name: 'Java', logo: 'assets/images/java.png' },
+                        { name: 'TypeScript', logo: 'assets/images/typescript.png' },
+                        { name: 'Ruby', logo: 'assets/images/ruby.png' }
                     ];
 
                     document.write(
                         languages.map(lang => `
                             <li onclick="redirectToProject('${lang.name}')" style="cursor: pointer;">
-                                <i class="devicon-${lang.icon}-plain ${lang.color}"></i><span>${lang.name}</span>
+                                <img src="${lang.logo}" alt="${lang.name} Logo" style="width: 40px; height: 40px; object-fit: contain;">
+                                <span>${lang.name}</span>
                             </li>
                         `).join('')
                     );
@@ -58,15 +59,15 @@
             <ul class="languages-list">
                 <script>
                     const webTools = [
-                        { name: 'HTML_CSS', icons: ['html5', 'css3'], label: 'HTML5 & CSS3' },
-                        { name: 'React', icons: ['react'], label: 'React' },
-                        { name: 'JavaScript', icons: ['javascript'], label: 'JavaScript' }
+                        { name: 'HTML_CSS', logos: ['assets/images/html5.png', 'assets/images/css3.png'], label: 'HTML5 & CSS3' },
+                        { name: 'React', logos: ['assets/images/react.png'], label: 'React' },
+                        { name: 'JavaScript', logos: ['assets/images/javascript.png'], label: 'JavaScript' }
                     ];
 
                     document.write(
                         webTools.map(tool => `
                             <li onclick="redirectToProject('${tool.name}')" style="cursor: pointer;">
-                                ${tool.icons.map(icon => `<i class="devicon-${icon}-plain colored"></i>`).join('')}
+                                ${tool.logos.map(logo => `<img src="${logo}" alt="${tool.label} Logo" style="width: 40px; height: 40px; object-fit: contain;">`).join('')}
                                 <span data-i18n="${tool.name.toLowerCase()}">${tool.label}</span>
                             </li>
                         `).join('')
