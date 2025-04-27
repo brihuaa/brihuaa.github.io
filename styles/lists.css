@@ -63,8 +63,11 @@
     color: white;
 }
 
+.tech-list i,
 .languages-list i {
-    font-size: 2rem;
+    font-size: 2rem; /* Ajusta según el tamaño deseado */
+    min-width: 40px;
+    text-align: center;
 }
 
 .languages-list span {
