@@ -11,69 +11,17 @@
     <div class="container">
         <!-- Theme and language toggles -->
         <div class="button-container">
-            <div class="return-toggle" onclick="redirectToStart()" data-i18n="return">🔙 Volver al Inicio</div>
+            <div class="return-toggle" onclick="redirectToStart()" data-i18n="return">
+                <img src="assets/images/icons/main-page.png" alt="Return to Home" class="icon"> Volver al Inicio
+            </div>
             <div class="language-toggle" onclick="toggleLanguage()">ES</div>
-            <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
-        </div>
-
-        <!-- Page title -->
-        <h1 data-i18n="projects_title">📁 Proyectos</h1>
-
-        <!-- Programming Languages Section -->
-        <div class="competency-card">
-            <div class="centered-title">
-                <h2 data-i18n="programming_languages">Programming Languages</h2>
+            <div class="theme-toggle" onclick="toggleTheme()">
+                <img src="assets/images/icons/theme.png" alt="Theme Toggle" class="icon">
             </div>
-            <ul class="languages-list">
-                <script>
-                    const languages = [
-                        { name: 'C++', icon: 'cplusplus', color: 'colored' },
-                        { name: 'C', icon: 'c', color: '' },
-                        { name: 'Python', icon: 'python', color: 'colored' },
-                        { name: 'Java', icon: 'java', color: 'colored' },
-                        { name: 'TypeScript', icon: 'typescript', color: 'colored' },
-                        { name: 'Ruby', icon: 'ruby', color: 'colored' },
-                    ];
-
-                    document.write(
-                        languages.map(lang => `
-                            <li onclick="redirectToProject('${lang.name}')" style="cursor: pointer;">
-                                <i class="devicon-${lang.icon}-plain ${lang.color}"></i><span>${lang.name}</span>
-                            </li>
-                        `).join('')
-                    );
-                </script>
-                <li onclick="redirectToProject('VHDL')" style="cursor: pointer;">
-                    <img src="assets/images/vhdl.png" alt="VHDL Logo" style="width: 40px; height: 40px; object-fit: contain;">
-                    <span>VHDL</span>
-                </li>
-            </ul>
         </div>
 
-        <!-- Web Development Section -->
-        <div class="competency-card">
-            <div class="centered-title">
-                <h2 data-i18n="web_development">Web Development</h2>
-            </div>
-            <ul class="languages-list">
-                <script>
-                    const webTools = [
-                        { name: 'HTML_CSS', icons: ['html5', 'css3'], label: 'HTML5 & CSS3' },
-                        { name: 'React', icons: ['react'], label: 'React' },
-                        { name: 'JavaScript', icons: ['javascript'], label: 'JavaScript' }
-                    ];
-
-                    document.write(
-                        webTools.map(tool => `
-                            <li onclick="redirectToProject('${tool.name}')" style="cursor: pointer;">
-                                ${tool.icons.map(icon => `<i class="devicon-${icon}-plain colored"></i>`).join('')}
-                                <span data-i18n="${tool.name.toLowerCase()}">${tool.label}</span>
-                            </li>
-                        `).join('')
-                    );
-                </script>
-            </ul>
-        </div>
+        <!-- Skills Section -->
+        <div id="skills-container"></div>
 
         <!-- Projects Grid -->
         <div class="projects-grid">
@@ -110,31 +58,12 @@
         </div>
     </div> <!-- Cierre del div.container -->
 
-        <div class="social-links">
-            <a href="https://github.com/brihuaa" target="_blank" rel="noopener noreferrer">
-                <img src="assets/images/github-logo.svg" alt="GitHub" class="social-icon">
-            </a>
-            <a href="https://codepen.io/brihuaa" target="_blank" rel="noopener noreferrer">
-                <img src="assets/images/codepen-logo.svg" alt="CodePen" class="social-icon">
-            </a>
-            <a href="https://www.linkedin.com/in/adrian-brihuega-sanchez-344707291/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/images/linkedin-logo.svg" alt="LinkedIn" class="social-icon">
-            </a>
-    </div>
+    <div id="social-links-container"></div>
 
-    <script src="scripts/app.js"></script>
-    <script>
-        // Highlight the project card based on the URL hash
-        window.addEventListener('DOMContentLoaded', () => {
-            const projectId = window.location.hash.slice(1);
-            if (projectId) {
-                const projectCard = document.getElementById(projectId);
-                if (projectCard) {
-                    projectCard.classList.add('highlight');
-                    projectCard.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
-    </script>
+    <script src="scripts/translations.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/event-listeners.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts/dynamic-content.js"></script>
 </body>
 </html>
