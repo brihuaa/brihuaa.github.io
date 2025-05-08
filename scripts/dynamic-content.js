@@ -10,6 +10,21 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function redirectToProjects() {
+    window.location.href = 'projects.html';
+}
+
+function redirectToStart() {
+    window.location.href = 'index.html';
+}
+
+function toggleTheme() {
+    const currentTheme = document.body.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
 // Cargar las secciones de habilidades desde el archivo externo
 fetch('partials/skills.html')
     .then(response => response.text())

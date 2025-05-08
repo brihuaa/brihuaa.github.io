@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Competencias Técnicas - Adrián Brihuega</title>
+    <title>Competencias Técnicas - Adrián Brihuega</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/all.css">
 </head>
 <body>
     <div class="container">
         <div class="button-container">
-            <div class="projects-toggle" onclick="redirectToProjects()" data-i18n="projects">
+            <div class="projects-toggle" onclick="redirectToProjects()">
                 <img src="assets/images/icons/projects.png" alt="projects-toggle img" class="icon"> Proyectos
             </div>
-            <div class="language-toggle" onclick="toggleLanguage()">ES</div>
             <div class="theme-toggle" onclick="toggleTheme()">
                 <img src="assets/images/icons/theme.png" alt="Theme Toggle" class="icon">
             </div>
             <div class="scroll-to-top hidden" onclick="scrollToTop()">
                 <img src="assets/images/icons/scroll-to-top.png" alt="Scroll to Top">
             </div>
-
         </div>
 
         <!-- Presentation Section -->
@@ -36,53 +34,53 @@
 
             <div class="competency-grid">
                 <div class="competency-card" style="grid-column: span 2;" data-aos="fade-right">
-                    <h2 data-i18n="introduction">
+                    <h2>
                         <img src="assets/images/icons/book.png" alt="Introduction" class="icon"> Introducción
                     </h2>
-                    <p data-i18n="introduction_text">Hola, soy Adrián Brihuega, un apasionado de la tecnología y el desarrollo de software...</p>
+                    <p>Hola, soy Adrián Brihuega, un apasionado de la tecnología y el desarrollo de software...</p>
                 </div>
 
                 <div class="competency-card" style="grid-column: span 2;" data-aos="fade-left">
-                    <h2 data-i18n="education">
+                    <h2>
                         <img src="assets/images/icons/education.png" alt="Education" class="icon"> Educación
                     </h2>
                     <div class="education-list">
                         <div>
                             <img src="assets/images/icons/nebrija.png" alt="Logo Universidad Antonio de Nebrija" class="education-logo">
-                            <span data-i18n="education_text">Grado en Ingeniería Informática - Universidad Antonio de Nebrija</span>
+                            <span>Grado en Ingeniería Informática - Universidad Antonio de Nebrija</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="competency-card" style="grid-column: span 2;" data-aos="fade-up">
-                    <h2 data-i18n="diplomas">
+                    <h2>
                         <img src="assets/images/icons/diploma.png" alt="Diplomas" class="icon"> Diplomas
                     </h2>
-                    <p data-i18n="diplomas_text">Certificado en Transformación Digital</p>
+                    <p>Certificado en Transformación Digital</p>
                 </div>
 
                 <div class="competency-card" style="grid-column: span 2;" data-aos="fade-up">
-                    <h2 data-i18n="languages">
+                    <h2>
                         <img src="assets/images/icons/languages.png" alt="Languages" class="icon"> Idiomas
                     </h2>
                     <div class="language-levels">
                         <script>
                             const languages = [
-                                { nameKey: "spanish", level: 5, labelKey: "native", flag: "🇪🇸" },
-                                { nameKey: "english", level: 4, labelKey: "c1", flag: "🇬🇧" },
-                                { nameKey: "chinese", level: 1, labelKey: "a1", flag: "🇨🇳" }
+                                { name: "Español", level: 5, label: "Nativo", flag: "🇪🇸" },
+                                { name: "Inglés", level: 4, label: "C1", flag: "🇬🇧" },
+                                { name: "Chino", level: 1, label: "A1", flag: "🇨🇳" }
                             ];
 
                             document.write(
                                 languages.map(lang => `
                                     <div class="language-item">
-                                        <span class="language-name">${lang.flag} <span data-i18n="${lang.nameKey}"></span></span>
+                                        <span class="language-name">${lang.flag} ${lang.name}</span>
                                         <div class="progress-bar">
                                             ${Array.from({ length: 5 }, (_, i) => `
                                                 <div class="square ${i < lang.level ? 'filled' : ''}"></div>
                                             `).join('')}
                                         </div>
-                                        <span class="level-label" data-i18n="${lang.labelKey}"></span>
+                                        <span class="level-label">${lang.label}</span>
                                     </div>
                                 `).join('')
                             );
@@ -98,24 +96,24 @@
         <!-- Contact Me Section -->
         <div class="contact-me competency-card" style="grid-column: span 2;" data-aos="fade-up">
             <div class="centered-title">
-                <h2 data-i18n="contact_me">            
+                <h2>
                     <img src="assets/images/icons/mail.png" alt="Contact Me" class="contact-icon"> Contact Me
                 </h2>
             </div>
             <form id="contact-form" class="contact-form" onsubmit="handleContactFormSubmission(event)">
                 <div class="form-group">
-                    <label for="name" data-i18n="name">Name</label>
+                    <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email" data-i18n="email">Email</label>
+                    <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <label for="message" data-i18n="message">Message</label>
+                    <label for="message">Message</label>
                     <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="submit-button" data-i18n="send_message">Send Message</button>
+                <button type="submit" class="submit-button">Send Message</button>
             </form>
         </div>
 
@@ -123,7 +121,6 @@
 
     <div id="social-links-container"></div>
 
-    <script src="scripts/translations.js"></script>
     <script src="scripts/utils.js"></script>
     <script src="scripts/event-listeners.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
