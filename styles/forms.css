@@ -55,20 +55,6 @@
     transform: scale(1.05);
 }
 
-.contact-me img {
-    width: 20px; /* Tamaño exacto */
-    height: 20px; /* Tamaño exacto */
-    object-fit: contain; /* Asegura que la imagen no se deforme */
-    vertical-align: middle; /* Alinea verticalmente con el texto */
-}
-
-.contact-icon {
-    width: 20px; /* Tamaño exacto */
-    height: 20px; /* Tamaño exacto */
-    object-fit: contain; /* Asegura que la imagen no se deforme */
-    vertical-align: middle; /* Alinea verticalmente con el texto */
-}
-
 .icon {
     width: 40px;
     height: 40px;
