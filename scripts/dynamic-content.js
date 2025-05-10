@@ -19,23 +19,32 @@ async function handleContactFormSubmission(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
+    const messageContainer = document.getElementById('form-message');
 
     try {
-        const response = await fetch('https://brihuaa.github.io/send-email', { // Cambia 'http://localhost:3000' si el servidor está alojado en otro dominio
+        const response = await fetch('https://brihuaa.github.io/send-email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         });
 
         if (response.ok) {
-            alert('Email enviado correctamente. ¡Gracias por tu mensaje!');
+            messageContainer.textContent = 'Email enviado correctamente. ¡Gracias por tu mensaje!';
+            messageContainer.className = 'form-message success';
         } else {
-            alert('Hubo un error al enviar el email. Por favor, inténtalo de nuevo.');
+            messageContainer.textContent = 'Hubo un error al enviar el email. Por favor, inténtalo de nuevo.';
+            messageContainer.className = 'form-message error';
         }
     } catch (error) {
         console.error('Error al enviar el formulario:', error);
-        alert('No se pudo enviar el mensaje. Verifica tu conexión o contacta al administrador.');
+        messageContainer.textContent = 'No se pudo enviar el mensaje. Verifica tu conexión o contacta al administrador.';
+        messageContainer.className = 'form-message error';
     }
+
+    messageContainer.style.display = 'block'; // Muestra el mensaje
+    setTimeout(() => {
+        messageContainer.style.display = 'none'; // Oculta el mensaje después de 5 segundos
+    }, 5000);
 
     event.target.reset();
 }

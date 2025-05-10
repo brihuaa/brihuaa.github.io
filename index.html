@@ -99,10 +99,10 @@
                 <h2 data-i18n="databases">
                     <img src="assets/images/icons/mail.png" alt="Contact Me" class="icon"> 
                     <span data-i18n="databases_text">Contáctame</span>
-
                 </h2>
             </div>
             <form id="contact-form" class="contact-form" onsubmit="handleContactFormSubmission(event)">
+                <div id="form-message" class="form-message hidden"></div> <!-- Contenedor para mensajes -->
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
