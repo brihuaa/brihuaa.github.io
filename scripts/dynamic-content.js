@@ -41,9 +41,9 @@ async function handleContactFormSubmission(event) {
         messageContainer.className = 'form-message error';
     }
 
-    messageContainer.style.display = 'block'; // Muestra el mensaje
+    messageContainer.style.display = 'block';
     setTimeout(() => {
-        messageContainer.style.display = 'none'; // Oculta el mensaje después de 5 segundos
+        messageContainer.style.display = 'none';
     }, 5000);
 
     event.target.reset();
