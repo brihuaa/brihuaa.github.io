@@ -48,7 +48,7 @@
                             <div class="project-preview">
                                 <h3 data-i18n="${project.id.toLowerCase()}_project_title"></h3>
                                 <p data-i18n="${project.descKey}"></p>
-                                <a href="${project.github}" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>
+                                ${project.github ? `<a href="${project.github}" target="_blank" data-i18n="view_on_github">Ver en GitHub</a>` : ''}
                             </div>
                         </div>
                     `).join('')

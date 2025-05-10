@@ -15,12 +15,28 @@ function toggleTheme() {
 }
 
 // Form Handling
-function handleContactFormSubmission(event) {
+async function handleContactFormSubmission(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
-    console.log('Contact Form Submitted:', data);
-    alert('Thank you for your message! We will get back to you soon.');
+
+    try {
+        const response = await fetch('https://brihuaa.github.io/send-email', { // Cambia 'http://localhost:3000' si el servidor está alojado en otro dominio
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            alert('Email enviado correctamente. ¡Gracias por tu mensaje!');
+        } else {
+            alert('Hubo un error al enviar el email. Por favor, inténtalo de nuevo.');
+        }
+    } catch (error) {
+        console.error('Error al enviar el formulario:', error);
+        alert('No se pudo enviar el mensaje. Verifica tu conexión o contacta al administrador.');
+    }
+
     event.target.reset();
 }
 

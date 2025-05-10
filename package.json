@@ -1,0 +1,27 @@
+{
+  "name": "brihuaa.github.io",
+  "version": "1.0.0",
+  "description": "This is a personal website project hosted on GitHub Pages. It includes custom\r styles, animations, and dynamic content generation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brihuaa/brihuaa.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brihuaa/brihuaa.github.io/issues"
+  },
+  "homepage": "https://github.com/brihuaa/brihuaa.github.io#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.3"
+  }
+}
