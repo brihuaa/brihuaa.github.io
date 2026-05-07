@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adrián Brihuega — Dev Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <style>
+    :root {
+      --bg: #0a0a0f; --surface: #111118; --surface2: #1a1a26;
+      --border: rgba(100,255,180,0.12); --accent: #00ffaa;
+      --accent2: #7c3aed; --accent3: #f59e0b;
+      --text: #e8e8f0; --muted: #7a7a99;
+      --card-radius: 16px;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+    [data-theme="light"] {
+      --bg: #f5f5f0; --surface: #ffffff; --surface2: #ebebf0;
+      --border: rgba(0,180,100,0.18); --text: #0f0f1a; --muted: #6b7280;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-mono); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(0,255,170,0.03) 1px,transparent 1px), linear-gradient(90deg,rgba(0,255,170,0.03) 1px,transparent 1px);
+      background-size: 60px 60px; pointer-events: none; z-index: 0;
+    }
+    #cursor-glow { position: fixed; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle,rgba(0,255,170,0.06) 0%,transparent 70%); pointer-events: none; transform: translate(-50%,-50%); z-index: 1; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
+
+    /* NAV */
+    nav { position: fixed; top:0; left:0; right:0; z-index:100; padding:1.2rem 2rem; display:flex; align-items:center; justify-content:space-between; background:rgba(10,10,15,0.75); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+    [data-theme="light"] nav { background:rgba(245,245,240,0.85); }
+    .nav-logo { font-family:var(--font-display); font-weight:800; font-size:1.2rem; color:var(--accent); letter-spacing:-0.02em; }
+    .nav-logo span { color:var(--text); }
+    .nav-links { display:flex; gap:0.5rem; align-items:center; }
+    .nav-link { font-size:0.75rem; color:var(--muted); text-decoration:none; padding:0.4rem 0.8rem; border-radius:6px; transition:color 0.2s,background 0.2s; letter-spacing:0.05em; text-transform:uppercase; }
+    .nav-link:hover { color:var(--accent); background:rgba(0,255,170,0.07); }
+    .nav-controls { display:flex; gap:0.5rem; align-items:center; }
+    .icon-btn { width:36px; height:36px; border-radius:8px; border:1px solid var(--border); background:var(--surface); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1rem; transition:border-color 0.2s,background 0.2s,transform 0.2s; }
+    .icon-btn:hover { border-color:var(--accent); background:rgba(0,255,170,0.08); transform:scale(1.05); }
+    .lang-btn { font-family:var(--font-mono); font-size:0.7rem; font-weight:700; padding:0 0.6rem; width:auto; letter-spacing:0.05em; }
+
+    /* HERO */
+    #hero { min-height:100vh; display:flex; align-items:center; padding-top:6rem; }
+    .hero-inner { width:100%; display:grid; grid-template-columns:1fr auto; gap:4rem; align-items:center; }
+    .hero-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.3rem 0.9rem; border-radius:100px; border:1px solid var(--accent); color:var(--accent); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.5rem; animation:pulse-border 2s infinite; }
+    @keyframes pulse-border { 0%,100%{box-shadow:0 0 0 0 rgba(0,255,170,0.3)} 50%{box-shadow:0 0 0 6px rgba(0,255,170,0)} }
+    .hero-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); animation:blink 1.5s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero-title { font-family:var(--font-display); font-size:clamp(2.8rem,7vw,5.5rem); font-weight:800; line-height:1; letter-spacing:-0.03em; margin-bottom:1.5rem; }
+    .hero-title .line { display:block; }
+    .hero-title .accent { color:var(--accent); }
+    .hero-title .dim { color:var(--muted); font-size:0.6em; font-weight:400; font-family:var(--font-mono); }
+    .hero-desc { color:var(--muted); max-width:480px; font-size:0.9rem; margin-bottom:2.5rem; }
+    .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; }
+    .btn-primary { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:10px; background:var(--accent); color:#000; font-family:var(--font-mono); font-size:0.8rem; font-weight:700; text-decoration:none; cursor:pointer; border:none; transition:transform 0.2s,box-shadow 0.2s; letter-spacing:0.03em; }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,255,170,0.3); }
+    .btn-ghost { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:10px; border:1px solid var(--border); background:transparent; color:var(--text); font-family:var(--font-mono); font-size:0.8rem; text-decoration:none; cursor:pointer; transition:border-color 0.2s,background 0.2s,transform 0.2s; }
+    .btn-ghost:hover { border-color:var(--accent); background:rgba(0,255,170,0.05); transform:translateY(-2px); }
+    .hero-avatar { width:200px; height:200px; border-radius:50%; border:3px solid var(--accent); background:var(--surface2); display:flex; align-items:center; justify-content:center; font-size:3.5rem; font-family:var(--font-display); font-weight:800; color:var(--accent); position:relative; box-shadow:0 0 60px rgba(0,255,170,0.15); overflow:hidden; flex-shrink:0; }
+    .hero-avatar img { width:100%; height:100%; object-fit:cover; }
+    .hero-avatar-ring { position:absolute; inset:-8px; border-radius:50%; border:1px solid rgba(0,255,170,0.2); animation:spin 12s linear infinite; pointer-events:none; }
+    .hero-avatar-ring::after { content:''; position:absolute; top:10%; left:-4px; width:8px; height:8px; border-radius:50%; background:var(--accent); }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .hero-stats { display:flex; gap:2.5rem; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border); }
+    .stat-num { font-family:var(--font-display); font-size:1.8rem; font-weight:800; color:var(--accent); }
+    .stat-label { font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
+
+    /* SECTIONS */
+    section { padding:6rem 0; }
+    .section-header { display:flex; align-items:baseline; gap:1rem; margin-bottom:3rem; }
+    .section-tag { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--accent); background:rgba(0,255,170,0.08); border:1px solid rgba(0,255,170,0.2); padding:0.2rem 0.7rem; border-radius:100px; white-space:nowrap; }
+    .section-title { font-family:var(--font-display); font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:800; letter-spacing:-0.02em; line-height:1.1; }
+    .section-line { flex:1; height:1px; background:var(--border); }
+
+    /* ABOUT */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+    .about-block { background:var(--surface); border:1px solid var(--border); border-radius:var(--card-radius); padding:2rem; position:relative; overflow:hidden; transition:border-color 0.3s,transform 0.3s; }
+    .about-block::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),transparent); opacity:0; transition:opacity 0.3s; }
+    .about-block:hover { border-color:rgba(0,255,170,0.3); transform:translateY(-3px); }
+    .about-block:hover::before { opacity:1; }
+    .about-block.span2 { grid-column:span 2; }
+    .block-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--muted); margin-bottom:1rem; }
+    .block-body { color:var(--muted); font-size:0.88rem; line-height:1.8; }
+    .lang-bars { display:flex; flex-direction:column; gap:1rem; margin-top:0.5rem; }
+    .lang-row { display:flex; align-items:center; gap:1rem; }
+    .lang-name { min-width:80px; font-size:0.82rem; }
+    .lang-track { flex:1; height:4px; background:var(--surface2); border-radius:99px; overflow:hidden; }
+    .lang-fill { height:100%; background:var(--accent); border-radius:99px; }
+    .lang-lvl { font-size:0.7rem; color:var(--accent); min-width:28px; text-align:right; }
+    .edu-item { display:flex; gap:1rem; align-items:flex-start; margin-bottom:1.2rem; }
+    .edu-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); margin-top:6px; flex-shrink:0; }
+    .edu-info strong { font-size:0.9rem; display:block; }
+    .edu-info span { font-size:0.78rem; color:var(--muted); }
+
+    /* SKILLS */
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
+    .skill-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--card-radius); padding:1.5rem; transition:border-color 0.3s,transform 0.3s; }
+    .skill-card:hover { border-color:rgba(0,255,170,0.3); transform:translateY(-4px); }
+    .skill-cat { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); margin-bottom:1rem; }
+    .skill-icons { display:flex; flex-wrap:wrap; gap:0.6rem; }
+    .skill-chip { display:flex; align-items:center; gap:0.4rem; padding:0.35rem 0.7rem; border-radius:8px; background:var(--surface2); border:1px solid var(--border); font-size:0.77rem; color:var(--text); transition:border-color 0.2s,background 0.2s; }
+    .skill-chip:hover { border-color:var(--accent); background:rgba(0,255,170,0.08); }
+    .skill-chip i { font-size:1.05rem; }
+
+    /* PROJECTS */
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; }
+    .project-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--card-radius); padding:1.8rem; display:flex; flex-direction:column; gap:1rem; transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s; position:relative; overflow:hidden; }
+    .project-card::after { content:''; position:absolute; inset:0; border-radius:var(--card-radius); background:radial-gradient(circle at top left,rgba(0,255,170,0.05),transparent 60%); opacity:0; transition:opacity 0.3s; }
+    .project-card:hover { border-color:rgba(0,255,170,0.3); transform:translateY(-5px); box-shadow:0 20px 40px rgba(0,0,0,0.3); }
+    .project-card:hover::after { opacity:1; }
+    .project-header { display:flex; justify-content:space-between; align-items:flex-start; }
+    .project-icon { font-size:2rem; }
+    .project-links { display:flex; gap:0.5rem; }
+    .project-link { width:32px; height:32px; border-radius:8px; border:1px solid var(--border); background:var(--surface2); color:var(--muted); display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:0.85rem; transition:color 0.2s,border-color 0.2s; }
+    .project-link:hover { color:var(--accent); border-color:var(--accent); }
+    .project-title { font-family:var(--font-display); font-size:1.05rem; font-weight:700; }
+    .project-desc { color:var(--muted); font-size:0.82rem; line-height:1.7; flex:1; }
+    .project-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:auto; }
+    .tag { font-size:0.65rem; padding:0.2rem 0.6rem; border-radius:100px; background:rgba(124,58,237,0.15); border:1px solid rgba(124,58,237,0.3); color:#a78bfa; letter-spacing:0.05em; text-transform:uppercase; }
+
+    /* CV MODAL */
+    .cv-modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(12px); z-index:200; display:flex; align-items:center; justify-content:center; padding:2rem; opacity:0; pointer-events:none; transition:opacity 0.3s; }
+    .cv-modal-backdrop.open { opacity:1; pointer-events:auto; }
+    .cv-modal { background:var(--surface); border:1px solid var(--border); border-radius:20px; width:100%; max-width:780px; max-height:90vh; overflow-y:auto; position:relative; transform:scale(0.95) translateY(20px); transition:transform 0.3s; }
+    .cv-modal-backdrop.open .cv-modal { transform:scale(1) translateY(0); }
+    .cv-close { position:sticky; top:0; z-index:10; display:flex; justify-content:flex-end; padding:1rem 1.5rem 0; background:var(--surface); }
+    .cv-close-btn { width:36px; height:36px; border-radius:8px; border:1px solid var(--border); background:var(--surface2); color:var(--muted); cursor:pointer; font-size:1.1rem; display:flex; align-items:center; justify-content:center; transition:color 0.2s,border-color 0.2s; }
+    .cv-close-btn:hover { color:var(--accent); border-color:var(--accent); }
+    .cv-body { padding:2.5rem; padding-top:1rem; }
+    .cv-header { display:flex; align-items:center; gap:2rem; margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:1px solid var(--border); }
+    .cv-avatar { width:80px; height:80px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:800; font-size:1.6rem; color:#000; flex-shrink:0; overflow:hidden; }
+    .cv-avatar img { width:100%; height:100%; object-fit:cover; }
+    .cv-name { font-family:var(--font-display); font-size:1.8rem; font-weight:800; }
+    .cv-role { color:var(--accent); font-size:0.85rem; margin-top:0.2rem; }
+    .cv-contact-row { display:flex; flex-wrap:wrap; gap:1rem; margin-top:0.75rem; }
+    .cv-contact-item { font-size:0.75rem; color:var(--muted); display:flex; align-items:center; gap:0.3rem; }
+    .cv-section { margin-bottom:2rem; }
+    .cv-section-title { font-family:var(--font-display); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--accent); margin-bottom:1rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border); }
+    .cv-entry { margin-bottom:1.2rem; }
+    .cv-entry-header { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:0.5rem; }
+    .cv-entry-title { font-weight:700; font-size:0.9rem; }
+    .cv-entry-date { font-size:0.72rem; color:var(--muted); }
+    .cv-entry-sub { font-size:0.8rem; color:var(--accent); margin:0.2rem 0; }
+    .cv-entry-body { font-size:0.82rem; color:var(--muted); line-height:1.7; margin-top:0.4rem; }
+    .cv-skills-row { display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .cv-skill-pill { padding:0.25rem 0.7rem; border-radius:100px; border:1px solid var(--border); background:var(--surface2); font-size:0.72rem; color:var(--text); }
+    .cv-download-row { display:flex; justify-content:center; margin-top:1.5rem; }
+
+    /* CONTACT */
+    .contact-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+    .contact-blurb { color:var(--muted); font-size:0.88rem; line-height:1.9; margin-bottom:1.5rem; }
+    .contact-socials { display:flex; flex-direction:column; gap:0.75rem; }
+    .social-link { display:flex; align-items:center; gap:0.75rem; padding:0.75rem 1rem; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--text); text-decoration:none; font-size:0.83rem; transition:border-color 0.2s,background 0.2s,transform 0.2s; }
+    .social-link:hover { border-color:var(--accent); background:rgba(0,255,170,0.07); transform:translateX(4px); }
+    .social-icon { font-size:1.2rem; width:20px; text-align:center; }
+    .social-arrow { margin-left:auto; color:var(--muted); transition:transform 0.2s; }
+    .social-link:hover .social-arrow { transform:translateX(3px); color:var(--accent); }
+    .contact-form { background:var(--surface); border:1px solid var(--border); border-radius:var(--card-radius); padding:2rem; display:flex; flex-direction:column; gap:1.2rem; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .field { display:flex; flex-direction:column; gap:0.4rem; }
+    .field label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); }
+    .field input, .field textarea { padding:0.75rem 1rem; border-radius:10px; border:1px solid var(--border); background:var(--surface2); color:var(--text); font-family:var(--font-mono); font-size:0.85rem; outline:none; transition:border-color 0.2s,box-shadow 0.2s; resize:vertical; }
+    .field input:focus, .field textarea:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(0,255,170,0.1); }
+    .field textarea { min-height:120px; }
+    .form-message { padding:0.75rem 1rem; border-radius:10px; font-size:0.82rem; text-align:center; display:none; }
+    .form-message.success { background:rgba(0,255,170,0.1); border:1px solid rgba(0,255,170,0.3); color:var(--accent); }
+    .form-message.error { background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:#f87171; }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:2rem 0; text-align:center; color:var(--muted); font-size:0.78rem; position:relative; z-index:2; }
+    footer a { color:var(--accent); text-decoration:none; }
+
+    /* SCROLL TOP */
+    #scrollTop { position:fixed; bottom:2rem; right:2rem; z-index:99; width:44px; height:44px; border-radius:10px; background:var(--surface); border:1px solid var(--border); color:var(--accent); font-size:1.1rem; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.3s,transform 0.3s; }
+    #scrollTop.visible { opacity:1; pointer-events:auto; }
+    #scrollTop:hover { background:rgba(0,255,170,0.1); transform:translateY(-3px); }
+
+    /* ANIMATIONS */
+    .fade-up { opacity:0; transform:translateY(30px); transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+    .delay-1{transition-delay:0.1s} .delay-2{transition-delay:0.2s} .delay-3{transition-delay:0.3s} .delay-4{transition-delay:0.4s}
+
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .hero-inner{grid-template-columns:1fr}
+      .hero-avatar{width:130px;height:130px;margin:0 auto}
+      .about-grid{grid-template-columns:1fr}
+      .about-block.span2{grid-column:span 1}
+      .contact-wrapper{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .hero-stats{gap:1.5rem}
+      .cv-header{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">adrián<span>.dev</span></div>
+  <div class="nav-links">
+    <a href="#about" class="nav-link" data-i18n="nav_about">Sobre mí</a>
+    <a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a>
+    <a href="#projects" class="nav-link" data-i18n="nav_projects">Proyectos</a>
+    <a href="#contact" class="nav-link" data-i18n="nav_contact">Contacto</a>
+    <button class="icon-btn lang-btn" style="width:auto;padding:0 0.8rem;font-size:0.72rem" onclick="openCV()" data-i18n="nav_cv">CV</button>
+  </div>
+  <div class="nav-controls">
+    <button class="icon-btn lang-btn" id="langBtn">ES</button>
+    <button class="icon-btn" id="themeBtn">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge fade-up visible">
+          <span data-i18n="hero_badge">Disponible para colaboraciones</span>
+        </div>
+        <h1 class="hero-title fade-up visible" style="transition-delay:0.1s">
+          <span class="line">Adrián</span>
+          <span class="line accent">Brihuega</span>
+          <span class="line dim">// Software Engineer</span>
+        </h1>
+        <p class="hero-desc fade-up visible" style="transition-delay:0.2s" data-i18n="hero_desc">
+          Apasionado del desarrollo de software, la arquitectura de sistemas y las nuevas tecnologías. Estudiante de Ingeniería Informática en la Universidad Antonio de Nebrija.
+        </p>
+        <div class="hero-ctas fade-up visible" style="transition-delay:0.3s">
+          <a href="#projects" class="btn-primary" data-i18n="hero_cta1">Ver proyectos →</a>
+          <button class="btn-ghost" onclick="openCV()" data-i18n="hero_cta_cv">Ver CV</button>
+          <a href="#contact" class="btn-ghost" data-i18n="hero_cta2">Contactar</a>
+        </div>
+        <div class="hero-stats fade-up visible" style="transition-delay:0.4s">
+          <div><div class="stat-num">10+</div><div class="stat-label" data-i18n="stat_projects">Proyectos</div></div>
+          <div><div class="stat-num">3+</div><div class="stat-label" data-i18n="stat_langs">Idiomas</div></div>
+          <div><div class="stat-num">∞</div><div class="stat-label" data-i18n="stat_coffee">Cafés</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-avatar fade-up visible" style="transition-delay:0.2s">
+          <div class="hero-avatar-ring"></div>
+          <img src="assets/images/profile.png" alt="Adrián Brihuega" onerror="this.style.display='none'">
+          <span id="avatar-fallback" style="display:none">AB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="section_about_tag">01 — Sobre mí</span>
+      <h2 class="section-title" data-i18n="section_about_title">Quién soy</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-block span2 fade-up">
+        <div class="block-label" data-i18n="about_intro_label">Introducción</div>
+        <div class="block-body" data-i18n="about_intro_body">
+          Hola, soy Adrián Brihuega, un apasionado de la tecnología y el desarrollo de software. Me especializo en construir aplicaciones robustas y eficientes, con interés tanto en el backend como en el frontend. Siempre estoy buscando nuevos retos y aprender las últimas tecnologías.
+        </div>
+      </div>
+      <div class="about-block fade-up delay-1">
+        <div class="block-label" data-i18n="about_edu_label">Educación</div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div class="edu-info">
+            <strong data-i18n="edu_degree">Grado en Ingeniería Informática</strong>
+            <span>Universidad Antonio de Nebrija · 2022 – 2026</span>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot" style="background:var(--accent3)"></div>
+          <div class="edu-info">
+            <strong data-i18n="edu_cert">Certificado en Transformación Digital</strong>
+            <span data-i18n="edu_cert_sub">Certificación profesional</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-block fade-up delay-2">
+        <div class="block-label" data-i18n="about_langs_label">Idiomas</div>
+        <div class="lang-bars">
+          <div class="lang-row"><span class="lang-name">🇪🇸 Español</span><div class="lang-track"><div class="lang-fill" style="width:100%"></div></div><span class="lang-lvl" data-i18n="lang_native">Nativo</span></div>
+          <div class="lang-row"><span class="lang-name">🇬🇧 English</span><div class="lang-track"><div class="lang-fill" style="width:80%"></div></div><span class="lang-lvl">C1</span></div>
+          <div class="lang-row"><span class="lang-name">🇨🇳 中文</span><div class="lang-track"><div class="lang-fill" style="width:10%"></div></div><span class="lang-lvl">A1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="section_skills_tag">02 — Skills</span>
+      <h2 class="section-title" data-i18n="section_skills_title">Stack técnico</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-cat" data-i18n="skill_cat_lang">Lenguajes</div>
+        <div class="skill-icons">
+          <div class="skill-chip"><i class="devicon-cplusplus-plain colored"></i> C++</div>
+          <div class="skill-chip"><i class="devicon-c-plain colored"></i> C</div>
+          <div class="skill-chip"><i class="devicon-python-plain colored"></i> Python</div>
+          <div class="skill-chip"><i class="devicon-java-plain colored"></i> Java</div>
+          <div class="skill-chip"><i class="devicon-javascript-plain colored"></i> JavaScript</div>
+          <div class="skill-chip"><i class="devicon-typescript-plain colored"></i> TypeScript</div>
+          <div class="skill-chip"><i class="devicon-ruby-plain colored"></i> Ruby</div>
+        </div>
+      </div>
+      <div class="skill-card fade-up delay-1">
+        <div class="skill-cat" data-i18n="skill_cat_web">Web & Frameworks</div>
+        <div class="skill-icons">
+          <div class="skill-chip"><i class="devicon-html5-plain colored"></i> HTML5</div>
+          <div class="skill-chip"><i class="devicon-css3-plain colored"></i> CSS3</div>
+          <div class="skill-chip"><i class="devicon-react-original colored"></i> React</div>
+          <div class="skill-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</div>
+        </div>
+      </div>
+      <div class="skill-card fade-up delay-2">
+        <div class="skill-cat" data-i18n="skill_cat_tools">Herramientas & DevOps</div>
+        <div class="skill-icons">
+          <div class="skill-chip"><i class="devicon-git-plain colored"></i> Git</div>
+          <div class="skill-chip"><i class="devicon-github-original colored"></i> GitHub</div>
+          <div class="skill-chip"><i class="devicon-linux-plain colored"></i> Linux</div>
+          <div class="skill-chip"><i class="devicon-vscode-plain colored"></i> VS Code</div>
+        </div>
+      </div>
+      <div class="skill-card fade-up delay-3">
+        <div class="skill-cat" data-i18n="skill_cat_db">Bases de datos</div>
+        <div class="skill-icons">
+          <div class="skill-chip"><i class="devicon-mysql-plain colored"></i> MySQL</div>
+          <div class="skill-chip"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</div>
+          <div class="skill-chip"><i class="devicon-mongodb-plain colored"></i> MongoDB</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="section_projects_tag">03 — Proyectos</span>
+      <h2 class="section-title" data-i18n="section_projects_title">Lo que he construido</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="section_contact_tag">04 — Contacto</span>
+      <h2 class="section-title" data-i18n="section_contact_title">Hablemos</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-wrapper">
+      <div class="fade-up">
+        <p class="contact-blurb" data-i18n="contact_blurb">¿Tienes un proyecto en mente o simplemente quieres charlar sobre tecnología? Escríbeme, estaré encantado de responder.</p>
+        <div class="contact-socials">
+          <a href="https://github.com/brihuaa" target="_blank" class="social-link">
+            <i class="devicon-github-original social-icon"></i><span>github.com/brihuaa</span><span class="social-arrow">→</span>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="social-link">
+            <i class="devicon-linkedin-plain colored social-icon"></i><span>LinkedIn</span><span class="social-arrow">→</span>
+          </a>
+          <a href="mailto:tu@email.com" class="social-link">
+            <span class="social-icon">✉</span><span>tu@email.com</span><span class="social-arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form fade-up delay-2">
+        <div id="form-message" class="form-message"></div>
+        <div class="form-row">
+          <div class="field"><label data-i18n="form_name">Nombre</label><input type="text" id="f-name" placeholder="Adrián" /></div>
+          <div class="field"><label data-i18n="form_email">Email</label><input type="email" id="f-email" placeholder="tu@email.com" /></div>
+        </div>
+        <div class="field"><label data-i18n="form_msg">Mensaje</label><textarea id="f-msg" placeholder="Hola..."></textarea></div>
+        <button class="btn-primary" id="sendBtn" data-i18n="form_send">Enviar mensaje →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Built with ❤️ by <a href="#">Adrián Brihuega</a> · <span id="year"></span></p>
+  </div>
+</footer>
+
+<button id="scrollTop">↑</button>
+
+<!-- CV MODAL -->
+<div class="cv-modal-backdrop" id="cvModal" onclick="handleBackdropClick(event)">
+  <div class="cv-modal">
+    <div class="cv-close">
+      <button class="cv-close-btn" onclick="closeCV()">✕</button>
+    </div>
+    <div class="cv-body">
+      <div class="cv-header">
+        <div class="cv-avatar">
+          <img src="assets/images/profile.png" alt="AB" onerror="this.style.display='none';this.parentElement.textContent='AB'">
+        </div>
+        <div>
+          <div class="cv-name">Adrián Brihuega Sánchez</div>
+          <div class="cv-role" data-i18n="cv_role">Software Engineer · Estudiante de Ingeniería Informática</div>
+          <div class="cv-contact-row">
+            <span class="cv-contact-item">📍 <span data-i18n="cv_location">Madrid, España</span></span>
+            <span class="cv-contact-item">🔗 github.com/brihuaa</span>
+            <span class="cv-contact-item">✉ tu@email.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title" data-i18n="cv_profile_title">Perfil</div>
+        <div class="cv-entry-body" data-i18n="cv_profile_body">
+          Estudiante de Ingeniería Informática apasionado por el desarrollo de software full-stack, la arquitectura de sistemas y las tecnologías emergentes. Experiencia práctica en múltiples lenguajes y paradigmas de programación, con especial interés en construir soluciones eficientes y bien documentadas.
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title" data-i18n="cv_edu_title">Educación</div>
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-title" data-i18n="cv_edu1_title">Grado en Ingeniería Informática</span>
+            <span class="cv-entry-date">2022 – 2026</span>
+          </div>
+          <div class="cv-entry-sub">Universidad Antonio de Nebrija · Madrid</div>
+          <div class="cv-entry-body" data-i18n="cv_edu1_body">Sistemas distribuidos, arquitectura de computadores, desarrollo web, bases de datos, redes y seguridad.</div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-title" data-i18n="cv_cert_title">Certificado en Transformación Digital</span>
+            <span class="cv-entry-date">2023</span>
+          </div>
+          <div class="cv-entry-sub" data-i18n="cv_cert_sub2">Certificación profesional</div>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title" data-i18n="cv_projects_title">Proyectos destacados</div>
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-title">Weather App</span>
+            <span class="cv-entry-date">JavaScript · OpenWeatherMap API</span>
+          </div>
+          <div class="cv-entry-body" data-i18n="cv_proj1_body">Aplicación del tiempo con geolocalización, búsqueda por ciudad y visualización de previsión de 5 días. Patrón módulo, async/await.</div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-title">Task Manager</span>
+            <span class="cv-entry-date">React · Hooks</span>
+          </div>
+          <div class="cv-entry-body" data-i18n="cv_proj2_body">Gestor de tareas Kanban con drag & drop, filtros, persistencia en localStorage y componentes reutilizables.</div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-title">Simple Blockchain (Ruby)</span>
+            <span class="cv-entry-date">Ruby · OOP</span>
+          </div>
+          <div class="cv-entry-body" data-i18n="cv_proj3_body">Implementación educativa de una blockchain con proof of work, validación de cadena e interfaz CLI.</div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-title">DevUtils CLI</span>
+            <span class="cv-entry-date">Python · Click</span>
+          </div>
+          <div class="cv-entry-body" data-i18n="cv_proj4_body">Herramienta de terminal con múltiples utilidades para desarrolladores: conversión de formatos, hash, timestamps y más.</div>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title" data-i18n="cv_skills_title">Habilidades técnicas</div>
+        <div class="cv-skills-row">
+          <span class="cv-skill-pill">JavaScript</span><span class="cv-skill-pill">TypeScript</span>
+          <span class="cv-skill-pill">Python</span><span class="cv-skill-pill">Java</span>
+          <span class="cv-skill-pill">Ruby</span><span class="cv-skill-pill">C / C++</span>
+          <span class="cv-skill-pill">React</span><span class="cv-skill-pill">Node.js</span>
+          <span class="cv-skill-pill">HTML / CSS</span><span class="cv-skill-pill">Git</span>
+          <span class="cv-skill-pill">MySQL</span><span class="cv-skill-pill">PostgreSQL</span>
+          <span class="cv-skill-pill">Linux</span><span class="cv-skill-pill">VHDL</span>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title" data-i18n="cv_langs_title">Idiomas</div>
+        <div class="cv-skills-row">
+          <span class="cv-skill-pill">🇪🇸 <span data-i18n="cv_lang_es">Español — Nativo</span></span>
+          <span class="cv-skill-pill">🇬🇧 <span data-i18n="cv_lang_en">Inglés — C1</span></span>
+          <span class="cv-skill-pill">🇨🇳 <span data-i18n="cv_lang_zh">Chino — A1</span></span>
+        </div>
+      </div>
+
+      <div class="cv-download-row">
+        <button class="btn-primary" onclick="window.print()" data-i18n="cv_download">⬇ Descargar / Imprimir CV</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── TRANSLATIONS ──
+  const t = {
+    es: {
+      nav_about:'Sobre mí', nav_skills:'Skills', nav_projects:'Proyectos', nav_contact:'Contacto', nav_cv:'Ver CV',
+      hero_badge:'● Disponible para colaboraciones',
+      hero_desc:'Apasionado del desarrollo de software, la arquitectura de sistemas y las nuevas tecnologías. Estudiante de Ingeniería Informática en la Universidad Antonio de Nebrija.',
+      hero_cta1:'Ver proyectos →', hero_cta_cv:'Ver CV', hero_cta2:'Contactar',
+      stat_projects:'Proyectos', stat_langs:'Idiomas', stat_coffee:'Cafés',
+      section_about_tag:'01 — Sobre mí', section_about_title:'Quién soy',
+      about_intro_label:'Introducción',
+      about_intro_body:'Hola, soy Adrián Brihuega, un apasionado de la tecnología y el desarrollo de software. Me especializo en construir aplicaciones robustas y eficientes, con interés tanto en el backend como en el frontend. Siempre estoy buscando nuevos retos y aprender las últimas tecnologías.',
+      about_edu_label:'Educación', edu_degree:'Grado en Ingeniería Informática',
+      edu_cert:'Certificado en Transformación Digital', edu_cert_sub:'Certificación profesional',
+      about_langs_label:'Idiomas', lang_native:'Nativo',
+      section_skills_tag:'02 — Skills', section_skills_title:'Stack técnico',
+      skill_cat_lang:'Lenguajes', skill_cat_web:'Web & Frameworks', skill_cat_tools:'Herramientas & DevOps', skill_cat_db:'Bases de datos',
+      section_projects_tag:'03 — Proyectos', section_projects_title:'Lo que he construido',
+      section_contact_tag:'04 — Contacto', section_contact_title:'Hablemos',
+      contact_blurb:'¿Tienes un proyecto en mente o simplemente quieres charlar sobre tecnología? Escríbeme, estaré encantado de responder.',
+      form_name:'Nombre', form_email:'Email', form_msg:'Mensaje', form_send:'Enviar mensaje →',
+      form_ok:'✓ Mensaje enviado. ¡Gracias!', form_err:'✕ Error al enviar. Inténtalo de nuevo.',
+      // CV
+      cv_role:'Software Engineer · Estudiante de Ingeniería Informática',
+      cv_location:'Madrid, España',
+      cv_profile_title:'Perfil',
+      cv_profile_body:'Estudiante de Ingeniería Informática apasionado por el desarrollo full-stack, arquitectura de sistemas y tecnologías emergentes. Experiencia práctica en múltiples lenguajes y paradigmas, con especial interés en construir soluciones eficientes y bien documentadas.',
+      cv_edu_title:'Educación', cv_edu1_title:'Grado en Ingeniería Informática',
+      cv_edu1_body:'Sistemas distribuidos, arquitectura de computadores, desarrollo web, bases de datos, redes y seguridad.',
+      cv_cert_title:'Certificado en Transformación Digital', cv_cert_sub2:'Certificación profesional',
+      cv_projects_title:'Proyectos destacados',
+      cv_proj1_body:'Aplicación del tiempo con geolocalización, búsqueda por ciudad y previsión de 5 días. Patrón módulo, async/await.',
+      cv_proj2_body:'Gestor de tareas Kanban con drag & drop, filtros, persistencia en localStorage y componentes reutilizables.',
+      cv_proj3_body:'Implementación educativa de una blockchain con proof of work, validación de cadena e interfaz CLI.',
+      cv_proj4_body:'Herramienta de terminal con múltiples utilidades para desarrolladores: conversión de formatos, hash, timestamps y más.',
+      cv_skills_title:'Habilidades técnicas', cv_langs_title:'Idiomas',
+      cv_lang_es:'Español — Nativo', cv_lang_en:'Inglés — C1', cv_lang_zh:'Chino — A1',
+      cv_download:'⬇ Descargar / Imprimir CV',
+      // Projects
+      p_weather_title:'Weather App', p_weather_desc:'Aplicación del tiempo con geolocalización, búsqueda por ciudad y previsión de 5 días usando la API de OpenWeatherMap.',
+      p_task_title:'Task Manager', p_task_desc:'Gestor de tareas Kanban en React con drag & drop, filtros por estado y persistencia local.',
+      p_blockchain_title:'Blockchain en Ruby', p_blockchain_desc:'Implementación de una blockchain con proof of work, validación de cadena e interfaz de línea de comandos.',
+      p_cli_title:'DevUtils CLI', p_cli_desc:'Herramienta de terminal en Python con utilidades para desarrolladores: hash, timestamps, conversión de formatos JSON/YAML.',
+      p_java_title:'Sistema Distribuido Java', p_java_desc:'Práctica de sistemas distribuidos con Java RMI, arquitectura cliente-servidor y manejo de concurrencia.',
+      p_ts_title:'Web App TypeScript', p_ts_desc:'Proyecto web con TypeScript, interfaces tipadas, arquitectura modular y componentes reutilizables.',
+      view_github:'Ver en GitHub',
+    },
+    en: {
+      nav_about:'About', nav_skills:'Skills', nav_projects:'Projects', nav_contact:'Contact', nav_cv:'View CV',
+      hero_badge:'● Open to collaborations',
+      hero_desc:'Passionate about software development, systems architecture and new technologies. Computer Engineering student at Universidad Antonio de Nebrija.',
+      hero_cta1:'View projects →', hero_cta_cv:'View CV', hero_cta2:'Get in touch',
+      stat_projects:'Projects', stat_langs:'Languages', stat_coffee:'Coffees',
+      section_about_tag:'01 — About', section_about_title:'Who I am',
+      about_intro_label:'Introduction',
+      about_intro_body:"Hi, I'm Adrián Brihuega, passionate about technology and software development. I specialize in building robust and efficient applications, with interest in both backend and frontend. I'm always looking for new challenges and learning the latest technologies.",
+      about_edu_label:'Education', edu_degree:'Computer Engineering Degree',
+      edu_cert:'Digital Transformation Certificate', edu_cert_sub:'Professional certification',
+      about_langs_label:'Languages', lang_native:'Native',
+      section_skills_tag:'02 — Skills', section_skills_title:'Tech Stack',
+      skill_cat_lang:'Languages', skill_cat_web:'Web & Frameworks', skill_cat_tools:'Tools & DevOps', skill_cat_db:'Databases',
+      section_projects_tag:'03 — Projects', section_projects_title:"What I've built",
+      section_contact_tag:'04 — Contact', section_contact_title:"Let's talk",
+      contact_blurb:"Have a project in mind or just want to chat about tech? Drop me a message, I'd love to hear from you.",
+      form_name:'Name', form_email:'Email', form_msg:'Message', form_send:'Send message →',
+      form_ok:'✓ Message sent successfully. Thank you!', form_err:'✕ Error sending. Please try again.',
+      cv_role:'Software Engineer · Computer Engineering Student',
+      cv_location:'Madrid, Spain',
+      cv_profile_title:'Profile',
+      cv_profile_body:'Computer Engineering student passionate about full-stack development, systems architecture and emerging technologies. Hands-on experience in multiple languages and paradigms, with special interest in building efficient and well-documented solutions.',
+      cv_edu_title:'Education', cv_edu1_title:'Computer Engineering Degree',
+      cv_edu1_body:'Distributed systems, computer architecture, web development, databases, networking and security.',
+      cv_cert_title:'Digital Transformation Certificate', cv_cert_sub2:'Professional certification',
+      cv_projects_title:'Featured Projects',
+      cv_proj1_body:'Weather app with geolocation, city search and 5-day forecast using OpenWeatherMap API. Module pattern, async/await.',
+      cv_proj2_body:'Kanban task manager with drag & drop, filters, localStorage persistence and reusable components.',
+      cv_proj3_body:'Educational blockchain implementation with proof of work, chain validation and CLI interface.',
+      cv_proj4_body:'Terminal tool with multiple developer utilities: format conversion, hashing, timestamps and more.',
+      cv_skills_title:'Technical Skills', cv_langs_title:'Languages',
+      cv_lang_es:'Spanish — Native', cv_lang_en:'English — C1', cv_lang_zh:'Chinese — A1',
+      cv_download:'⬇ Download / Print CV',
+      p_weather_title:'Weather App', p_weather_desc:'Weather application with geolocation, city search and 5-day forecast using the OpenWeatherMap API.',
+      p_task_title:'Task Manager', p_task_desc:'Kanban task manager in React with drag & drop, status filters and local persistence.',
+      p_blockchain_title:'Ruby Blockchain', p_blockchain_desc:'Blockchain implementation with proof of work, chain validation and command-line interface.',
+      p_cli_title:'DevUtils CLI', p_cli_desc:'Python terminal tool with developer utilities: hashing, timestamps, JSON/YAML format conversion.',
+      p_java_title:'Java Distributed System', p_java_desc:'Distributed systems practice with Java RMI, client-server architecture and concurrency handling.',
+      p_ts_title:'TypeScript Web App', p_ts_desc:'Web project with TypeScript, typed interfaces, modular architecture and reusable components.',
+      view_github:'View on GitHub',
+    }
+  };
+
+  let lang = localStorage.getItem('language') || 'es';
+  let theme = localStorage.getItem('theme') || 'dark';
+
+  function applyLang() {
+    document.documentElement.lang = lang;
+    document.getElementById('langBtn').textContent = lang.toUpperCase();
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.dataset.i18n;
+      if (t[lang][k] !== undefined) el.textContent = t[lang][k];
+    });
+    renderProjects();
+  }
+
+  function applyTheme() {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.getElementById('themeBtn').textContent = theme === 'dark' ? '🌙' : '☀️';
+  }
+
+  document.getElementById('langBtn').addEventListener('click', () => {
+    lang = lang === 'es' ? 'en' : 'es';
+    localStorage.setItem('language', lang);
+    applyLang();
+  });
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    theme = theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', theme);
+    applyTheme();
+  });
+
+  // CV MODAL
+  function openCV() {
+    document.getElementById('cvModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCV() {
+    document.getElementById('cvModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleBackdropClick(e) {
+    if (e.target === document.getElementById('cvModal')) closeCV();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCV(); });
+
+  // PROJECTS
+  const projects = [
+    { icon:'<i class="devicon-javascript-plain colored"></i>', titleKey:'p_weather_title', descKey:'p_weather_desc', tags:['JavaScript','API','Async/Await','CSS'], github:'https://github.com/brihuaa/weather-app' },
+    { icon:'<i class="devicon-react-original colored"></i>', titleKey:'p_task_title', descKey:'p_task_desc', tags:['React','Hooks','Kanban','CSS'], github:'https://github.com/brihuaa/react-task-manager' },
+    { icon:'<i class="devicon-ruby-plain colored"></i>', titleKey:'p_blockchain_title', descKey:'p_blockchain_desc', tags:['Ruby','OOP','Blockchain','CLI'], github:'https://github.com/brihuaa/simple-blockchain-in-ruby' },
+    { icon:'<i class="devicon-python-plain colored"></i>', titleKey:'p_cli_title', descKey:'p_cli_desc', tags:['Python','CLI','Click','Utils'], github:'https://github.com/brihuaa/devutils-cli' },
+    { icon:'<i class="devicon-java-plain colored"></i>', titleKey:'p_java_title', descKey:'p_java_desc', tags:['Java','RMI','Distributed','OOP'], github:'https://github.com/brihuaa/Practica2SD' },
+    { icon:'<i class="devicon-typescript-plain colored"></i>', titleKey:'p_ts_title', descKey:'p_ts_desc', tags:['TypeScript','Web','Modules'], github:'https://github.com/brihuaa/P2-Web' },
+  ];
+
+  function renderProjects() {
+    const grid = document.getElementById('projects-grid');
+    grid.innerHTML = projects.map((p, i) => `
+      <div class="project-card fade-up" style="transition-delay:${i * 0.07}s">
+        <div class="project-header">
+          <div class="project-icon">${p.icon}</div>
+          <div class="project-links">
+            ${p.github ? `<a href="${p.github}" target="_blank" class="project-link" title="GitHub"><i class="devicon-github-original"></i></a>` : ''}
+          </div>
+        </div>
+        <div class="project-title">${t[lang][p.titleKey]}</div>
+        <div class="project-desc">${t[lang][p.descKey]}</div>
+        <div class="project-tags">${p.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+      </div>
+    `).join('');
+    observeFadeUps();
+  }
+
+  // SCROLL
+  function observeFadeUps() {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => io.observe(el));
+  }
+
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => scrollBtn.classList.toggle('visible', window.scrollY > 400));
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // CURSOR
+  const glow = document.getElementById('cursor-glow');
+  window.addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+
+  // FORM
+  document.getElementById('sendBtn').addEventListener('click', async () => {
+    const name = document.getElementById('f-name').value;
+    const email = document.getElementById('f-email').value;
+    const msg = document.getElementById('f-msg').value;
+    const msgEl = document.getElementById('form-message');
+    if (!name || !email || !msg) return;
+    try {
+      const res = await fetch('https://brihuaa.github.io/send-email', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message: msg }),
+      });
+      msgEl.textContent = res.ok ? t[lang].form_ok : t[lang].form_err;
+      msgEl.className = 'form-message ' + (res.ok ? 'success' : 'error');
+    } catch {
+      msgEl.textContent = t[lang].form_err;
+      msgEl.className = 'form-message error';
+    }
+    msgEl.style.display = 'block';
+    setTimeout(() => { msgEl.style.display = 'none'; }, 5000);
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+  applyTheme();
+  applyLang();
+  observeFadeUps();
+
+  console.log('%c Adrián Brihuega Portfolio ', 'background:#00ffaa;color:#000;font-weight:bold;font-size:14px;padding:4px 8px;border-radius:4px');
+  console.log('%c github.com/brihuaa ', 'color:#00ffaa;font-size:12px');
+</script>
+</body>
+</html>
