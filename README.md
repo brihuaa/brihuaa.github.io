@@ -24,4 +24,4 @@ Visita: https://brihuaa.github.io
 
 ## Contacto
 - GitHub: github.com/brihuaa
-- Email: tu@email.com
+- Email: adrianbrihuegasanchez20@email.com
