@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adrián Brihuega — Systems & Core Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Cabinet+Grotesk:wght@800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <!-- Enlace al archivo CSS externo -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">adrián<span>.sys</span></div>
+  <div class="nav-links">
+    <a href="#about" class="nav-link" data-i18n="nav_about">Core</a>
+    <a href="#skills" class="nav-link" data-i18n="nav_skills">Stack</a>
+    <a href="#projects" class="nav-link" data-i18n="nav_projects">Proyectos</a>
+    <a href="#contact" class="nav-link" data-i18n="nav_contact">Contacto</a>
+    <a href="assets/cv.tex" download="Adrian_Brihuega_CV.tex" class="icon-btn lang-btn" style="text-decoration: none;" data-i18n="nav_cv">CV.TEX</a>
+  </div>
+  <div class="nav-controls">
+    <button class="icon-btn lang-btn" id="langBtn">ES</button>
+    <button class="icon-btn" id="themeBtn">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span data-i18n="hero_badge">[ DISPONIBLE_PRÁCTICAS_JUNIO_2026 ]</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="line">Adrián</span>
+          <span class="line accent">Brihuega</span>
+          <span class="line dim">// Systems, Architecture &amp; Pure Code</span>
+        </h1>
+        <p class="hero-desc" data-i18n="hero_desc">
+          Estudiante de Ingeniería Informática enfocado en la computación clásica, el desarrollo estructurado y la arquitectura de sistemas complejos. Código escrito por humanos, optimizado a nivel de infraestructura, sin cajas negras.
+        </p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn-primary" data-i18n="hero_cta1">REPOSITORIOS →</a>
+          <button class="btn-ghost" onclick="openCV()" data-i18n="hero_cta_cv">LEER_CV.TXT</button>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">0x06</div><div class="stat-label" data-i18n="stat_projects">Módulos</div></div>
+          <div><div class="stat-num">0x03</div><div class="stat-label" data-i18n="stat_langs">Idiomas</div></div>
+          <div><div class="stat-num">LOG</div><div class="stat-label" data-i18n="stat_coffee">Compilaciones</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-avatar">
+          <span style="font-size: 2.5rem; margin-bottom: 5px;">01001011</span>
+          <span>HUMAN_MADE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="section_about_tag">01 // CONTEXTO</span>
+      <h2 class="section-title" data-i18n="section_about_title">Estructura básica</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-block span2">
+        <div class="block-label" data-i18n="about_intro_label">Manifiesto</div>
+        <div class="block-body" data-i18n="about_intro_body">
+          Hola, soy Adrián Brihuega, ingeniero de software enfocado en resolver problemas reales mediante código determinista, algoritmos robustos y una gestión de memoria precisa. Me especializo en la construcción de sistemas donde cada ciclo de reloj cuenta y donde la lógica estructurada prevalece sobre los modelos probabilísticos. Creo en el software transparente, mantenible y diseñado con un entendimiento profundo del hardware subyacente.
+        </div>
+      </div>
+      <div class="about-block">
+        <div class="block-label" data-i18n="about_edu_label">Formación Académica</div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div class="edu-info">
+            <strong data-i18n="edu_degree">Grado en Ingeniería Informática</strong>
+            <span>Universidad Antonio de Nebrija · 2022 – 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-block">
+        <div class="block-label" data-i18n="about_langs_label">Protocolos de Comunicación</div>
+        <div class="lang-bars">
+          <div class="lang-row"><span class="lang-name">Español</span><div class="lang-track"><div class="lang-fill" style="width:100%"></div></div><span class="lang-lvl" data-i18n="lang_native">Nativo</span></div>
+          <div class="lang-row"><span class="lang-name">English</span><div class="lang-track"><div class="lang-fill" style="width:80%"></div></div><span class="lang-lvl">C1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="section_skills_tag">02 // HERRAMIENTAS</span>
+      <h2 class="section-title" data-i18n="section_skills_title">Entorno Técnico</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat" data-i18n="skill_cat_lang">Bajo Nivel y Tipados</div>
+        <div class="skill-icons">
+          <div class="skill-chip"><i class="devicon-cplusplus-plain"></i> C++</div>
+          <div class="skill-chip"><i class="devicon-c-plain"></i> C</div>
+          <div class="skill-chip"><i class="devicon-java-plain"></i> Java</div>
+          <div class="skill-chip">🎛️ VHDL / Hardware</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat" data-i18n="skill_cat_ai">Sistemas y Lógica</div>
+        <div class="skill-icons">
+          <div class="skill-chip">⚙️ Unix Kernel</div>
+          <div class="skill-chip">📊 SPSS / Estadística</div>
+          <div class="skill-chip">🐍 Python Core</div>
+          <div class="skill-chip">📐 Algoritmia pura</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat" data-i18n="skill_cat_web">Infraestructura y Redes</div>
+        <div class="skill-icons">
+          <div class="skill-chip"><i class="devicon-typescript-plain"></i> TypeScript</div>
+          <div class="skill-chip"><i class="devicon-nodejs-plain"></i> Node.js</div>
+          <div class="skill-chip">🌐 REST APIs</div>
+          <div class="skill-chip">🗄️ SQL Databases</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat" data-i18n="skill_cat_tools">Entornos de Control</div>
+        <div class="skill-icons">
+          <div class="skill-chip"><i class="devicon-git-plain"></i> Git Server</div>
+          <div class="skill-chip"><i class="devicon-docker-plain"></i> Docker CLI</div>
+          <div class="skill-chip"><i class="devicon-linux-plain"></i> Linux Bash</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="section_projects_tag">03 // PRODUCCIÓN</span>
+      <h2 class="section-title" data-i18n="section_projects_title">Sistemas Compilados</h2>
+    </div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="section_contact_tag">04 // ENLACE</span>
+      <h2 class="section-title" data-i18n="section_contact_title">Abrir Conexión</h2>
+    </div>
+    <div class="contact-wrapper">
+      <div>
+        <p class="contact-blurb" data-i18n="contact_blurb">¿Buscas un perfil enfocado en arquitectura de computadores, ingeniería de sistemas o desarrollo de backend robusto? Disponible para integraciones de equipo a partir de junio de 2026.</p>
+        <div class="contact-socials">
+          <a href="https://github.com/brihuaa" target="_blank" class="social-link"><span>GitHub</span><span>[LINK]</span></a>
+          <a href="https://linkedin.com/in/adrianbrihuega" target="_blank" class="social-link"><span>LinkedIn</span><span>[LINK]</span></a>
+          <a href="mailto:adrianbrihuegasanchez20@gmail.com" class="social-link"><span>Email</span><span>[STDOUT]</span></a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div id="form-message" class="form-message"></div>
+        <div class="form-row">
+          <div class="field"><label data-i18n="form_name">ORIGEN</label><input type="text" id="f-name" placeholder="Tu Nombre" /></div>
+          <div class="field"><label data-i18n="form_email">RETORNO</label><input type="email" id="f-email" placeholder="tu@email.com" /></div>
+        </div>
+        <div class="field"><label data-i18n="form_msg">CARGA_UTIL (Mensaje)</label><textarea id="f-msg" placeholder="Escribe aquí..."></textarea></div>
+        <button class="btn-primary" id="sendBtn" data-i18n="form_send">TRANSMITIR_DATOS →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Hecho a mano en texto plano por <a href="#">Adrián Brihuega</a> · <span id="year"></span></p>
+  </div>
+</footer>
+
+<button id="scrollTop">[^]</button>
+
+<!-- CV MODAL -->
+<div class="cv-modal-backdrop" id="cvModal" onclick="handleBackdropClick(event)">
+  <div class="cv-modal">
+    <div class="cv-close"><button class="cv-close-btn" onclick="closeCV()">ESC</button></div>
+    <div class="cv-body">
+      <div class="cv-header">
+        <div>
+          <div class="cv-name">Adrián Brihuega Sánchez</div>
+          <div class="cv-role" data-i18n="cv_role">Systems Engineer · Grado Ingeniería Informática — 2026</div>
+          <div class="cv-contact-row">
+            <span>📍 Madrid, España</span>
+            <span>🔗 github.com/brihuaa</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title" data-i18n="cv_profile_title">Perfil Técnico</div>
+        <div class="cv-entry-body" data-i18n="cv_profile_body">
+          Estudiante de último curso de Ingeniería Informática con fuertes bases en arquitectura de computadores, diseño lógico en hardware (VHDL), concurrencia y desarrollo nativo (C/C++). Experto en análisis de datos clásico mediante SPSS y optimización de flujos de sistemas distribuidos y redes Unix.
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title" data-i18n="cv_edu_title">Educación</div>
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-title">Grado en Ingeniería Informática</span>
+            <span class="cv-entry-date">2022 – 2026</span>
+          </div>
+          <div class="cv-entry-sub">Universidad Antonio de Nebrija</div>
+          <div class="cv-entry-body">Especialización en Arquitectura de Computadores, Sistemas Operativos, Redes y Estructuras de Datos.</div>
+        </div>
+      </div>
+
+    <div class="cv-download-row">
+      <a class="btn-primary" href="assets/Adrian_Brihuega_CV.pdf" download="Adrian_Brihuega_CV.pdf" data-i18n="cv_download">DESCARGAR_PDF</a>
+      <a class="btn-ghost" href="assets/cv.tex" download="Adrian_Brihuega_CV.tex">DESCARGAR_LATEX (.TEX)</a>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts modulares -->
+<script src="js/translations.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
